@@ -96,11 +96,11 @@ git checkout module2
 | Nom | Rôle |
 |---|---|
 | **Faridath GABA ISSIFOU** ⭐ | Chef de groupe |
-| Mawoussi Sandrine AGBODJI | Développeuse |
-| N'DA Prielle Arifath | Développeuse |
-| Fréjus ZANKPO | Développeur |
-| Abdou-Hakim KARIM ISSAOU | Développeur |
-| Ivan Claudel Idjäm OGA | Développeur |
+| Mawoussi Sandrine AGBODJI | Rédactrice |
+| N'DA Prielle Arifath | Analyse CSS|
+| Fréjus ZANKPO | Architecte logiciel |
+| Abdou-Hakim KARIM ISSAOU | Développeuret implémentation |
+| Ivan Claudel Idjäm OGA | Corédacteur |
 
 ---
 
