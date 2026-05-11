@@ -1,3 +1,4 @@
+/*===================== PARTIE 1 LES VARIABLES ET  L'INITIALISATION===========================*/
 *{
     box-sizing: border-box;
     margin: 0;
@@ -5,16 +6,16 @@
 }
 
 :root {
-    --bg: /* le fond générale de la page*/
-    --sufarce:var(--bg) /* le fond des cartes*/
-    --surface 2:var(--bg) /* le fnd secondaire, pour les photos, tags..*/
-    --boder:  /* les bordures substiles*/
-    --accent: /* la couleur principale*/
-    --accent-dim:   /* accent transparent */
-    --accent-glow: /* accent pour les lueurs*/
-    --text-1:  /*texte principal*/
-    --text-2:  /* secondaire*/
-    --text-3:  /*tertiare*/
+    --bg: #090c12;  /* le fond générale de la page*/
+    --sufarce: #111a2c; /* le fond des cartes*/
+    --surface-2: #181e2c /* le fnd secondaire, pour les photos, tags..*/
+    --boder:  rgba (255, 255, 255, 0.07) /* les bordures substiles*/
+    --accent:  /* la couleur principale*/
+    --accent-dim:  rgba(0, 46, 229, 0.437); /* accent transparent */
+    --accent-glow:  rgba(0, 38, 229, 0.25); /* accent pour les lueurs*/
+    --text-1: #eef0f5;  /*texte principal*/
+    --text-2:  #8a93a8;   /* secondaire*/
+    --text-3:  #545d72;   /*tertiare*/
     --radius-card: 16px;           /* pour arrondir les bords des cartes */
     --transition: 0.35s cubic-bezier(.4,0,.2,1);  /* transition fluide, lorsque le curseur passe sur la carte il y a un bref changemaent de couleur */ 
 
@@ -22,17 +23,39 @@
 
 body {
   
-  background: 
-  color:
-  font-family:
-  font-size:
-  line-height:
+  background: var (--bg);/* le fond de la page comme defini olus haut*/
+  color: var (--text-1); /* la couleur de tout le texte*/
+  font-family: 'DM Sans', sans-serif; /* les polices*/
+  font-size:15 px; /* la taille du texte*/
+  line-height:1.6; /* l'espacement entre les lignes*/
+  min-height: 100 vh; /* la hauteurminimale de la page pour que la page couvre tout l'écran mm avec peu de texte*/
   }
-
+/*=============== =================PARTIE 2__ LA SECTION WRAPPER=================== 
+                            elle eveloppe le contenu de section team pour quil ne déborde pas sur toute la page*/
 .team-section {
-  padding:
-  max-widht:
+  padding: 100 px 24 px;
+  max-widht: 1200 px;
   margin: 0 ;
 }
+/*===================== PARTIE 3=================== L'EN TETE DE LA SECTION TEAM===*/
+.section-header {
+  text-align: center;
+  margin-bottom: 72 px;
+}
 
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8 px;
+  font-size: 12 px;
+  font-weight: 500;
+  letter-spacing: 0.15 em;
+  text-transform: uppercase;
+  color: var (--accent);
+  background: var (--accent-dim);
+  border: 1 px solid rgba (0,229,180,0.2);
+  border-radius: 100 px;
+  padding: 6 px 16 px;
+  margin-bottom: 24 px;
+}
 
