@@ -1,15 +1,38 @@
-/*====================
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: /* le fond générale de la page*/
+    --sufarce:var(--bg) /* le fond des cartes*/
+    --surface 2:var(--bg) /* le fnd secondaire, pour les photos, tags..*/
+    --boder:  /* les bordures substiles*/
+    --accent: /* la couleur principale*/
+    --accent-dim:   /* accent transparent */
+    --accent-glow: /* accent pour les lueurs*/
+    --text-1:  /*texte principal*/
+    --text-2:  /* secondaire*/
+    --text-3:  /*tertiare*/
+    --radius-card: 16px;           /* pour arrondir les bords des cartes */
+    --transition: 0.35s cubic-bezier(.4,0,.2,1);  /* transition fluide, lorsque le curseur passe sur la carte il y a un bref changemaent de couleur */ 
+
+}
+
+body {
+  
+  background: 
+  color:
+  font-family:
+  font-size:
+  line-height:
+  }
+
+.team-section {
+  padding:
+  max-widht:
+  margin: 0 ;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-*/
