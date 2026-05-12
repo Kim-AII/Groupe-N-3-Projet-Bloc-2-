@@ -1,0 +1,390 @@
+/* =============================================================
+   services.css — NexaLab
+   Section : Nos expertises / Services
+   Layout : bento-grid (Flexbox + Grid)
+   Responsive : mobile ≤768px · tablette ≤1024px · desktop
+============================================================= */
+
+/* ── Section wrapper ────────────────────────────────────────── */
+.services {
+  padding: var(--space-3xl) var(--space-xl);
+  background-color: var(--color-bg);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── En-tête de section ─────────────────────────────────────── */
+.services__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Label au-dessus du titre — style "INNOVATION" de la charte */
+.services__label {
+  font-family:    var(--font-heading);
+  font-size:      0.7rem;
+  font-weight:    600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+  border:         1px solid var(--color-accent);
+  padding:        0.25rem 0.75rem;
+  border-radius:  var(--radius-sm);
+}
+
+.services__title {
+  font-family: var(--font-heading);
+  font-size:   clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color:       var(--color-text);
+}
+
+/* Mot en bleu dans le titre */
+.services__title--accent {
+  color: var(--color-accent);
+}
+
+.services__subtitle {
+  font-family: var(--font-body);
+  font-size:   1rem;
+  color:       var(--color-text-muted);
+  max-width:   520px;
+  line-height: 1.65;
+}
+
+/* ── Grille bento principale ─────────────────────────────────
+   Desktop : [carte featured large | colonne 2 cartes empilées]
+             [carte wide pleine largeur]
+   Tablette : 2 colonnes égales
+   Mobile   : 1 colonne
+─────────────────────────────────────────────────────────────── */
+.services__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;   /* featured + colonne droite */
+  grid-template-rows:    auto auto;
+  gap: var(--space-lg);
+}
+
+/* Colonne droite : deux cartes empilées avec Flexbox */
+.services__column {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-lg);
+}
+
+/* ── Carte service — base commune ───────────────────────────── */
+.service-card {
+  position:      relative;
+  overflow:      hidden;
+  border-radius: var(--radius-lg);
+  border:        1px solid var(--color-border);
+  background:    var(--color-surface);
+  transition:
+    border-color var(--transition-base),
+    transform    var(--transition-smooth),
+    box-shadow   var(--transition-smooth);
+}
+
+/* Hover commun */
+.service-card:hover {
+  border-color: var(--color-border-hover);
+  transform:    translateY(-4px);
+  box-shadow:   0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 30px var(--color-accent-glow);
+}
+
+/* Inner padding */
+.service-card__inner {
+  position:       relative;
+  z-index:        1;
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-md);
+  padding:        var(--space-xl);
+  height:         100%;
+}
+
+/* ── Top row : icône + tag ───────────────────────────────────── */
+.service-card__top {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-md);
+}
+
+/* Icône encadrée */
+.service-card__icon {
+  width:         52px;
+  height:        52px;
+  flex-shrink:   0;
+  display:       flex;
+  align-items:   center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border:        1px solid var(--color-border);
+  background:    rgba(79, 142, 247, 0.06);
+  color:         var(--color-accent);
+  transition:    background var(--transition-base),
+                 border-color var(--transition-base);
+}
+
+.service-card__icon svg {
+  width:  26px;
+  height: 26px;
+}
+
+.service-card:hover .service-card__icon {
+  background:   rgba(79, 142, 247, 0.14);
+  border-color: var(--color-accent);
+}
+
+/* Badge tag — IA / IoT / DATA / CYBER */
+.service-card__tag {
+  font-family:    var(--font-heading);
+  font-size:      0.65rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+  background:     rgba(79, 142, 247, 0.1);
+  border:         1px solid rgba(79, 142, 247, 0.25);
+  padding:        0.2rem 0.6rem;
+  border-radius:  var(--radius-sm);
+}
+
+/* ── Corps texte ─────────────────────────────────────────────── */
+.service-card__body {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-xs);
+}
+
+.service-card__name {
+  font-family: var(--font-heading);
+  font-size:   1.2rem;
+  font-weight: 600;
+  color:       var(--color-text);
+}
+
+.service-card__desc {
+  font-family: var(--font-body);
+  font-size:   0.9rem;
+  color:       var(--color-text-dim);
+  line-height: 1.65;
+}
+
+/* ── Liste de fonctionnalités (carte featured uniquement) ─────── */
+.service-card__features {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.5rem;
+  margin-top:     var(--space-xs);
+}
+
+.service-card__feature {
+  display:     flex;
+  align-items: center;
+  gap:         0.6rem;
+  font-family: var(--font-body);
+  font-size:   0.85rem;
+  color:       var(--color-text-dim);
+}
+
+/* Pastille bleue devant chaque item */
+.service-card__feature-dot {
+  width:        6px;
+  height:       6px;
+  border-radius: 50%;
+  background:   var(--color-accent);
+  flex-shrink:  0;
+}
+
+/* ── CTA lien ────────────────────────────────────────────────── */
+.service-card__cta {
+  display:      inline-flex;
+  align-items:  center;
+  gap:          0.4rem;
+  margin-top:   auto;           /* colle en bas de la carte */
+  font-family:  var(--font-heading);
+  font-size:    0.85rem;
+  font-weight:  600;
+  color:        var(--color-accent);
+  transition:   gap var(--transition-fast),
+                color var(--transition-fast);
+}
+
+.service-card__cta:hover {
+  gap:   0.7rem;
+  color: #7eabff;
+}
+
+/* ── Carte FEATURED (IA) ─────────────────────────────────────── */
+.service-card--featured {
+  grid-row: 1;                /* ligne 1, colonne 1 implicite */
+}
+
+.service-card--featured .service-card__inner {
+  padding:    var(--space-2xl);
+  min-height: 380px;
+}
+
+.service-card--featured .service-card__name {
+  font-size: 1.5rem;
+}
+
+.service-card--featured .service-card__desc {
+  font-size: 0.95rem;
+  max-width: 380px;
+}
+
+/* Halo lumineux en fond (déco) */
+.service-card__glow {
+  position: absolute;
+  top:      -60px;
+  left:     -60px;
+  width:    300px;
+  height:   300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(79, 142, 247, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.service-card--featured:hover .service-card__glow {
+  opacity: 1.6;
+}
+
+/* ── Cartes SECONDAIRES (IoT + Data) ─────────────────────────── */
+.service-card--secondary {
+  flex: 1;                    /* Flexbox : occupe la moitié de la colonne */
+}
+
+.service-card--secondary .service-card__name {
+  font-size: 1.1rem;
+}
+
+/* ── Carte WIDE (Cybersécurité) — pleine largeur ligne 2 ─────── */
+.service-card--wide {
+  grid-column: 1 / -1;        /* occupe toutes les colonnes */
+}
+
+.service-card--wide .service-card__inner {
+  flex-direction: row;        /* layout horizontal */
+  align-items:    center;
+  gap:            var(--space-xl);
+  flex-wrap:      wrap;
+}
+
+.service-card--wide .service-card__top {
+  flex-shrink: 0;
+}
+
+.service-card--wide .service-card__body {
+  flex: 1;
+  min-width: 200px;
+}
+
+.service-card--wide .service-card__cta {
+  margin-top: 0;
+  flex-shrink: 0;
+}
+
+/* Bande verticale décorative gauche */
+.service-card__stripe {
+  position: absolute;
+  top:      0;
+  left:     0;
+  width:    3px;
+  height:   100%;
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent),
+    var(--color-accent-dark)
+  );
+  opacity: 0.7;
+  transition: opacity var(--transition-base);
+}
+
+.service-card--wide:hover .service-card__stripe {
+  opacity: 1;
+}
+
+/* =============================================================
+   RESPONSIVE — Tablette (≤ 1024px)
+============================================================= */
+@media (max-width: 1024px) {
+  .services {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .services__grid {
+    grid-template-columns: 1fr 1fr;   /* deux colonnes égales */
+    gap: var(--space-md);
+  }
+
+  .service-card--featured .service-card__inner {
+    min-height: 320px;
+    padding: var(--space-xl);
+  }
+
+  .service-card--featured .service-card__name {
+    font-size: 1.3rem;
+  }
+
+  .service-card--wide .service-card__inner {
+    flex-direction: column;
+    align-items:    flex-start;
+  }
+
+  .service-card--wide .service-card__cta {
+    margin-top: var(--space-xs);
+  }
+}
+
+/* =============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+============================================================= */
+@media (max-width: 768px) {
+  .services {
+    padding: var(--space-2xl) var(--space-md);
+  }
+
+  .services__title {
+    font-size: 1.75rem;
+  }
+
+  /* Passage à une colonne unique */
+  .services__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* La colonne droite redevient un flux normal */
+  .services__column {
+    gap: var(--space-md);
+  }
+
+  /* Carte featured : pas de hauteur min fixe */
+  .service-card--featured .service-card__inner {
+    min-height: unset;
+    padding: var(--space-lg);
+  }
+
+  /* Carte wide : pas besoin d'être wide sur mobile */
+  .service-card--wide .service-card__inner {
+    padding: var(--space-lg);
+  }
+
+  .service-card__inner {
+    padding: var(--space-lg);
+  }
+}
