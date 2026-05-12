@@ -66,4 +66,105 @@ body {
 background: var(--accent);
 animation: pulse 2s ease-in-out infinite;
 }
-/*================= PARTIE 4
+
+/* Nous passons au keyframe qui definit l'animation en collab avec les :: avant before*/
+@keyframes pulse {
+    0 %, 100 % { opacity: 1; transform: scale (1); }
+    50 %       { opacity: 0.4; tansform: scale (0.7); }
+}
+
+.section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp (2 rem, 5 vw, 3.2 rem); /* adaptabilité à la taille del'ecran*/
+    fint-weight: 800;
+    line-height: 1.1; 
+    letter-sapcing: -0.02 em;
+    color: var (--text-1);
+    margin-bottom: 16 px:
+}
+    
+/* Le mot en couleur dans le titre */
+.section-title span {
+  color: var (--accent);
+}
+ 
+.section-subtitle {
+  font-size: 16 px;
+  color: var (--text-2);
+  max-width: 520 px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/*============== PARTIE 4=== la grille des cartes=========================*/
+.team-grid {
+    dsiplay: grid; /* active les colonnes*/
+    /* auto-fill = autant de colonnes que possible selon la largeur*/
+    /* minmax (260 px, 1 fr) = chaque colonne fait min 260 px, et le max egalemt*/
+    grid-columns: repeat (auto-fill, minmax (260 px, 1 fr)); /* repeat cré automatiquement le bon nombre de olonnes*/
+    gap: 24 px; /* espace entre les cartes*/
+
+    /* ================ PARTIE 5 === LA CARTE DE CHAQUE MEMBRE======*/
+    .member-card {
+        position: relative; /* permet de positionner des éléments à l'intérieur de la carte en valeurs absolues.
+        Sans ça, le badge de rôle et l'overlay ne sauraient pas où se placer.*/
+        
+        background: var (--surface);
+        border: 1 px solid var (--border); /* ne bordure très subtile autour de la carte — rgba(255,255,255,0.07), donc blanc à 7% d'opacité.
+        Presque invisible mais elle donne de la définition à la carte.*/
+        
+        border-radius: var (radius-card); /* arrondi les coins des pjotos*/
+        
+        overflow: hidden; /*: "tout ce qui dépasse les bords de la carte devient invisible". 
+        C'est ce qui fait que la photo reste bien dans sa zone et que l'arrondi des coins s'applique aussi à la photo.*/
+        
+        cursor: defaulte; /* Le curseur reste une flèche normale au survol.
+        Sans ça, selon le navigateur il pourrait devenir une main comme sur un lien, ce qui serait trompeur.*/
+        
+        transition: border-color var (--transition),
+            transform var (--transition), 
+            box-shadow var (--transition); /* On prépare 3 propriétés à s'animer lors du hover — la bordure, le déplacement et l'ombre.
+        Sans cette ligne, les changements du hover seraient instantanés et brusques. */
+
+
+
+ 
+/* ============= PARTIE 6==== Trait d'accent sur la barre bleu en haut de carte=============*/
+ 
+.card-accent-bar {
+  height: 3 px;
+  background: linear-gradient (90 deg, var (--accent), transparent);
+  opacity: 0;                          /* invisible par défaut */
+  transition: opacity var (--transition);
+}
+ 
+.member-card:hover .card-accent-bar {
+  opacity: 1;                          /* visible au hover */
+}
+ 
+ 
+/* ====================PARTIE 7 === Zone photo ===================== */
+ 
+.card-photo-wrap {
+  position: relative;
+  height: 220 px;
+  background: var (--surface-2);
+  overflow: hidden;
+}
+
+ 
+/* Si on mets une vraie photo (<img>) */
+.card-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* la photo remplit la zone sans se déformer */
+  display: block;
+  filter: grayscale(20%);  /* légèrement désaturée par défaut */
+  transition: filter var(--transition), transform var(--transition);
+}
+ 
+.member-card:hover .card-photo-wrap img {
+  filter: grayscale(0%);   /* couleurs normales au hover */
+  transform: scale(1.04);  /* léger zoom */
+}
+        
