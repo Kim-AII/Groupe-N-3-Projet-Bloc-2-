@@ -33,9 +33,9 @@ body {
 /*=============== =================PARTIE 2__ LA SECTION WRAPPER=================== 
                             elle eveloppe le contenu de section team pour quil ne déborde pas sur toute la page*/
 .team-section {
-  padding: 100 px 24 px;
-  max-widht: 1200 px;
-  margin: 0 ;
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: 0;
 }
 /*===================== PARTIE 3=================== L'EN TETE DE LA SECTION TEAM===*/
 .section-header {
