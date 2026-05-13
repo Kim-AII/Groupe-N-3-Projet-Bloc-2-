@@ -446,6 +446,143 @@
 
         </ul>
     </div>
+    <!-- ============================================
+     SECTION CONTACT — NexaLab
+     Fichier  : index.html (section #8)
+     CSS lié  : styles/contact.css
+     Auteur   : Sandrine
+     Design   : maquette_nexalab_v2
+============================================ -->
+
+<section id="contact" class="contact">
+  <div class="contact-inner">
+
+    <!-- Colonne gauche : infos -->
+    <div class="contact-info">
+
+      <div class="section-label">Contact</div>
+
+      <h2>Parlons de votre <strong>projet</strong></h2>
+
+      <p>
+        Notre équipe vous répond sous 24h. Décrivez votre projet
+        et nous vous proposons une solution adaptée.
+      </p>
+
+      <!-- Email -->
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <a href="mailto:contact@nexalab.africa">contact@nexalab.africa</a>
+      </div>
+
+      <!-- Téléphone -->
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07
+                     A19.5 19.5 0 013.07 10.8 19.79 19.79 0 010 2.12
+                     A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81
+                     a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27
+                     a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <a href="tel:+22900000000">+229 00 00 00 00</a>
+      </div>
+
+      <!-- Adresse -->
+      <div class="contact-detail">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <span>Cotonou, Bénin</span>
+      </div>
+
+    </div>
+    <!-- fin .contact-info -->
+
+    <!-- Colonne droite : formulaire -->
+    <form class="contact-form" action="#" method="post" novalidate>
+
+      <!-- Ligne Nom + Email -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label class="form-label" for="contact-name">nom_complet</label>
+          <input
+            class="form-input"
+            type="text"
+            id="contact-name"
+            name="name"
+            placeholder="Jean Dupont"
+            autocomplete="name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="contact-email">email</label>
+          <input
+            class="form-input"
+            type="email"
+            id="contact-email"
+            name="email"
+            placeholder="jean@entreprise.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+      </div>
+      <!-- fin .form-row -->
+
+      <!-- Sujet -->
+      <div class="form-group">
+        <label class="form-label" for="contact-subject">sujet</label>
+        <input
+          class="form-input"
+          type="text"
+          id="contact-subject"
+          name="subject"
+          placeholder="Votre sujet"
+          required
+        />
+      </div>
+
+      <!-- Message -->
+      <div class="form-group">
+        <label class="form-label" for="contact-message">message</label>
+        <textarea
+          class="form-input"
+          id="contact-message"
+          name="message"
+          placeholder="Décrivez votre projet..."
+          required
+        ></textarea>
+      </div>
+
+      <!-- Bouton pleine largeur -->
+      <button class="contact-btn" type="submit">
+        Envoyer &rarr;
+      </button>
+
+    </form>
+    <!-- fin .contact-form -->
+
+  </div>
+  <!-- fin .contact-inner -->
+</section>
+<!-- fin #contact -->
  </footer>   
 </body>
 </html>
