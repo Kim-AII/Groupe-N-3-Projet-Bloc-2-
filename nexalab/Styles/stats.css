@@ -1,0 +1,489 @@
+/* =============================================================
+   stats.css — NexaLab
+   Section : Chiffres clés / Impact
+   Layout : CSS Grid + Flexbox
+   Responsive : mobile ≤768px · tablette ≤1024px · desktop
+============================================================= */
+
+/* ── Section wrapper ────────────────────────────────────────── */
+.stats {
+  position:         relative;
+  background-color: var(--color-surface);  /* légèrement plus clair que le bg */
+  padding:          var(--space-3xl) 0;
+  overflow:         hidden;
+}
+
+/* Ligne de fond décorative Starlink — trait horizontal lumineux */
+.stats__bg-line {
+  position:   absolute;
+  top:        0;
+  left:       0;
+  right:      0;
+  height:     1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-accent)   30%,
+    var(--color-accent)   70%,
+    transparent 100%
+  );
+  opacity: 0.25;
+}
+
+/* ── Container centré  */
+.stats__container {
+  max-width: 1200px;
+  margin:    0 auto;
+  padding:   0 var(--space-xl);
+  display:   flex;
+  flex-direction: column;
+  gap:       var(--space-2xl);
+}
+
+/* ── En-tête ──── */
+.stats__header {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  gap:            var(--space-md);
+}
+
+.stats__label {
+  font-family:    var(--font-heading);
+  font-size:      0.7rem;
+  font-weight:    600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+  border:         1px solid var(--color-accent);
+  padding:        0.25rem 0.75rem;
+  border-radius:  var(--radius-sm);
+}
+
+.stats__title {
+  font-family: var(--font-heading);
+  font-size:   clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color:       var(--color-text);
+}
+
+.stats__title--accent {
+  color: var(--color-accent);
+}
+
+.stats__subtitle {
+  font-family: var(--font-body);
+  font-size:   1rem;
+  color:       var(--color-text-muted);
+  max-width:   500px;
+  line-height: 1.65;
+}
+
+/* =============================================================
+   GRILLES
+============================================================= */
+
+/* ── Grille primaire — 4 grandes stats ──────────────────────── */
+.stats__grid--primary {
+  display:               grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr; /* 1ère colonne plus large */
+  gap:                   var(--space-lg);
+  align-items:           stretch;
+}
+
+/* ── Grille secondaire — encart + 3 petites stats ───────────── */
+.stats__grid--secondary {
+  display:               grid;
+  grid-template-columns: 1fr 2fr;
+  gap:                   var(--space-lg);
+  align-items:           stretch;
+}
+
+/* Groupe des 3 petites stats en ligne -->*/
+.stats__secondary-group {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   var(--space-lg);
+}
+
+/* =============================================================
+   CARTE STAT — base commune
+============================================================= */
+.stat-card {
+  border-radius: var(--radius-lg);
+  border:        1px solid var(--color-border);
+  background:    var(--color-bg);
+  transition:
+    border-color var(--transition-base),
+    transform    var(--transition-smooth),
+    box-shadow   var(--transition-smooth);
+}
+
+.stat-card:hover {
+  border-color: var(--color-border-hover);
+  transform:    translateY(-4px);
+  box-shadow:   0 20px 50px rgba(0, 0, 0, 0.45),
+                0 0 28px var(--color-accent-glow);
+}
+
+.stat-card__inner {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-sm);
+  padding:        var(--space-xl);
+  height:         100%;
+}
+
+/* ── Icône (petite, en haut à gauche) ───────────────────────── */
+.stat-card__icon {
+  width:          40px;
+  height:         40px;
+  display:        flex;
+  align-items:    center;
+  justify-content: center;
+  border-radius:  var(--radius-sm);
+  border:         1px solid var(--color-border);
+  background:     rgba(79, 142, 247, 0.06);
+  color:          var(--color-accent);
+  flex-shrink:    0;
+  transition:     background var(--transition-base),
+                  border-color var(--transition-base);
+}
+
+.stat-card__icon svg {
+  width:  18px;
+  height: 18px;
+}
+
+.stat-card:hover .stat-card__icon {
+  background:   rgba(79, 142, 247, 0.14);
+  border-color: var(--color-accent);
+}
+
+/* ── Ligne valeur principale ─────────────────────────────────── */
+.stat-card__value-row {
+  display:     flex;
+  align-items: baseline;
+  gap:         0.3rem;
+  margin-top:  var(--space-xs);
+}
+
+/* Chiffre principal — impact visuel maximal */
+.stat-card__number {
+  font-family:   var(--font-heading);
+  font-size:     clamp(2.4rem, 5vw, 3.4rem);
+  font-weight:   700;
+  line-height:   1;
+  color:         var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+/* Unité (%, +, pays, etc.) */
+.stat-card__unit {
+  font-family: var(--font-heading);
+  font-size:   1.1rem;
+  font-weight: 600;
+  color:       var(--color-accent);
+}
+
+/* ── Label — nom de la stat ──────────────────────────────────── */
+.stat-card__label {
+  font-family: var(--font-heading);
+  font-size:   0.95rem;
+  font-weight: 600;
+  color:       var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+/* ── Détail — description courte ─────────────────────────────── */
+.stat-card__detail {
+  font-family: var(--font-body);
+  font-size:   0.83rem;
+  color:       var(--color-text-muted);
+  line-height: 1.6;
+  flex:        1;
+}
+
+/* ── Sparkline (carte featured uniquement) ───────────────────── */
+.stat-card__sparkline {
+  width:      100%;
+  height:     36px;
+  margin-top: auto;
+  opacity:    0.8;
+}
+
+.stat-card__sparkline svg {
+  width:  100%;
+  height: 100%;
+}
+
+/* ── Barre de progression (satisfaction) ────────────────────── */
+.stat-card__progress-bar {
+  width:         100%;
+  height:        4px;
+  background:    rgba(255, 255, 255, 0.07);
+  border-radius: 99px;
+  overflow:      hidden;
+  margin-top:    auto;
+}
+
+.stat-card__progress-fill {
+  height:        100%;
+  width:         var(--progress);
+  background:    linear-gradient(
+    to right,
+    var(--color-accent-dark),
+    var(--color-accent)
+  );
+  border-radius: 99px;
+}
+
+/* ── Variante HIGHLIGHT (carte featured Projets) ─────────────── */
+.stat-card--highlight {
+  border-color: rgba(79, 142, 247, 0.2);
+  background:   linear-gradient(
+    135deg,
+    rgba(79, 142, 247, 0.07) 0%,
+    var(--color-bg)           60%
+  );
+}
+
+.stat-card--highlight .stat-card__number {
+  color: var(--color-accent);
+}
+
+.stat-card--highlight:hover {
+  border-color: rgba(79, 142, 247, 0.5);
+  box-shadow:   0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(79, 142, 247, 0.15);
+}
+
+/* ── Variante SMALL (3 petites stats du bas) ─────────────────── */
+.stat-card--small .stat-card__number {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.stat-card--small .stat-card__inner {
+  padding: var(--space-lg);
+}
+
+/* =============================================================
+   ENCART CALLOUT — citation CEO
+============================================================= */
+.stats__callout {
+  display:        flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap:            var(--space-lg);
+  padding:        var(--space-xl);
+  border-radius:  var(--radius-lg);
+  border:         1px solid var(--color-border);
+  background:     linear-gradient(
+    135deg,
+    rgba(79, 142, 247, 0.05) 0%,
+    var(--color-bg)           70%
+  );
+}
+
+/* Guillemet décoratif avant la citation */
+.stats__callout-quote {
+  font-family:  var(--font-body);
+  font-size:    0.95rem;
+  color:        var(--color-text-dim);
+  line-height:  1.7;
+  padding-left: var(--space-lg);
+  border-left:  2px solid var(--color-accent);
+}
+
+.stats__callout-quote strong {
+  color:       var(--color-text);
+  font-weight: 500;
+}
+
+/* Auteur de la citation */
+.stats__callout-author {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-md);
+}
+
+/* Avatar initiales */
+.stats__callout-avatar {
+  width:            44px;
+  height:           44px;
+  border-radius:    50%;
+  background:       var(--color-accent-dark);
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  font-family:      var(--font-heading);
+  font-size:        0.8rem;
+  font-weight:      700;
+  color:            #fff;
+  flex-shrink:      0;
+}
+
+.stats__callout-meta {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.15rem;
+}
+
+.stats__callout-name {
+  font-family: var(--font-heading);
+  font-size:   0.9rem;
+  font-weight: 600;
+  color:       var(--color-text);
+}
+
+.stats__callout-role {
+  font-family: var(--font-body);
+  font-size:   0.78rem;
+  color:       var(--color-text-muted);
+}
+
+/* =============================================================
+   BANDE SECTEURS — style ticker Starlink
+============================================================= */
+.stats__sectors {
+  display:        flex;
+  align-items:    center;
+  gap:            var(--space-lg);
+  padding:        var(--space-lg) var(--space-xl);
+  border-radius:  var(--radius-lg);
+  border:         1px solid var(--color-border);
+  background:     var(--color-bg);
+  flex-wrap:      wrap;
+}
+
+.stats__sector-label {
+  font-family:    var(--font-heading);
+  font-size:      0.7rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--color-text-muted);
+  white-space:    nowrap;
+}
+
+/* Séparateur vertical entre label et items */
+.stats__sector-label::after {
+  content:        "";
+  display:        inline-block;
+  width:          1px;
+  height:         14px;
+  background:     var(--color-border);
+  margin-left:    var(--space-lg);
+  vertical-align: middle;
+}
+
+.stats__sector-list {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--space-sm);
+  align-items: center;
+}
+
+.stats__sector-item {
+  font-family:    var(--font-body);
+  font-size:      0.8rem;
+  font-weight:    400;
+  color:          var(--color-text-dim);
+  padding:        0.3rem 0.75rem;
+  border-radius:  var(--radius-sm);
+  border:         1px solid var(--color-border);
+  background:     rgba(255, 255, 255, 0.03);
+  white-space:    nowrap;
+  transition:     border-color var(--transition-fast),
+                  color         var(--transition-fast);
+}
+
+.stats__sector-item:hover {
+  border-color: var(--color-accent);
+  color:        var(--color-accent);
+}
+
+/* =============================================================
+   RESPONSIVE — Tablette (≤ 1024px)
+============================================================= */
+@media (max-width: 1024px) {
+  .stats__container {
+    padding: 0 var(--space-lg);
+    gap:     var(--space-xl);
+  }
+
+  /* Grille primaire : 2+2 */
+  .stats__grid--primary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Grille secondaire : empilée */
+  .stats__grid--secondary {
+    grid-template-columns: 1fr;
+  }
+
+  .stats__secondary-group {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stats__sectors {
+    padding: var(--space-md) var(--space-lg);
+  }
+}
+
+/* =============================================================
+   RESPONSIVE — Mobile (≤ 768px)
+============================================================= */
+@media (max-width: 768px) {
+  .stats {
+    padding: var(--space-2xl) 0;
+  }
+
+  .stats__container {
+    padding: 0 var(--space-md);
+    gap:     var(--space-xl);
+  }
+
+  .stats__title {
+    font-size: 1.75rem;
+  }
+
+  /* Tout en une colonne sur mobile */
+  .stats__grid--primary,
+  .stats__grid--secondary,
+  .stats__secondary-group {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  /* Chiffres légèrement réduits */
+  .stat-card__number {
+    font-size: 2.2rem;
+  }
+
+  .stat-card__inner {
+    padding: var(--space-lg);
+  }
+
+  /* Callout : padding réduit */
+  .stats__callout {
+    padding: var(--space-lg);
+  }
+
+  /* Secteurs : scroll horizontal sur très petits écrans */
+  .stats__sectors {
+    padding:    var(--space-md);
+    gap:        var(--space-md);
+    flex-wrap:  wrap;
+  }
+
+  .stats__sector-list {
+    gap: var(--space-xs);
+  }
+
+  .stats__sector-label::after {
+    display: none;
+  }
+}

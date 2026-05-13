@@ -62,25 +62,25 @@ body {
 /* Le petit point avant le texte du tag */
 .section-tag::before {
     content: '';
-    widhth: 6 px: border radius: 50%:
-background: var(--accent);
-animation: pulse 2s ease-in-out infinite;
+    width: 6 px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
 }
 
 /* Nous passons au keyframe qui definit l'animation en collab avec les :: avant before*/
 @keyframes pulse {
-    0 %, 100 % { opacity: 1; transform: scale (1); }
-    50 %       { opacity: 0.4; tansform: scale (0.7); }
+    0%, 100% { opacity: 1; transform: scale (1); }
+    50%       { opacity: 0.4; tansform: scale (0.7); }
 }
 
 .section-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp (2 rem, 5 vw, 3.2 rem); /* adaptabilité à la taille del'ecran*/
-    fint-weight: 800;
+    font-weight: 800;
     line-height: 1.1; 
-    letter-sapcing: -0.02 em;
+    letter-spacing: -0.02 em;
     color: var (--text-1);
-    margin-bottom: 16 px:
+    margin-bottom: 16 px
 }
     
 /* Le mot en couleur dans le titre */
@@ -98,10 +98,10 @@ animation: pulse 2s ease-in-out infinite;
 
 /*============== PARTIE 4=== la grille des cartes=========================*/
 .team-grid {
-    dsiplay: grid; /* active les colonnes*/
+    display: grid; /* active les colonnes*/
     /* auto-fill = autant de colonnes que possible selon la largeur*/
     /* minmax (260 px, 1 fr) = chaque colonne fait min 260 px, et le max egalemt*/
-    grid-columns: repeat (auto-fill, minmax (260 px, 1 fr)); /* repeat cré automatiquement le bon nombre de olonnes*/
+    grid-column: repeat (auto-fill, minmax (260 px, 1 fr)); /* repeat cré automatiquement le bon nombre de olonnes*/
     gap: 24 px; /* espace entre les cartes*/
 
     /* ================ PARTIE 5 === LA CARTE DE CHAQUE MEMBRE======*/
@@ -128,7 +128,14 @@ animation: pulse 2s ease-in-out infinite;
 
 
 
- 
+    }
+    
+    .member-card:hover {
+        border-color: var (--accent); /* la bordure devient de la couleur d'accent au hover*/
+        transform: translateY(-4 px); /* la carte se soulève légèrement au hover*/
+        box-shadow: 0 8 px 24 px var (--accent-glow); /* une ombre colorée apparaît sous la carte au hover, pour renforcer l'effet de soulèvement. */
+    }
+      }
 /* ============= PARTIE 6==== Trait d'accent sur la barre bleu en haut de carte=============*/
  
 .card-accent-bar {

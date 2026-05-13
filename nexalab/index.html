@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="styles/header.css" />
 <link rel="stylesheet" href="styles/hero.css" />
 <link rel="stylesheet" href="styles/about.css" />
+<link rel="stylesheet" href="styles/services.css" />
+<link rel="stylesheet" href="styles/stats.css" />
 ...
 </head>
 <body>
-      <!-- ======== SECTION SERVICES============================== -->
+      <!-- ======== SECTION SERVICES============== -->
   <section class="services" id="services" aria-labelledby="services-heading">
 
     <!-- En-tête de section -->
@@ -180,6 +182,238 @@
     </div><!-- /.services__grid -->
 
   </section>
+    <!-- ========   SECTION STATS — ======== -->
+  <section class="stats" id="stats" aria-labelledby="stats-heading">
+
+    <!-- Bande de fond décorative (effet Starlink) -->
+    <div class="stats__bg-line" aria-hidden="true"></div>
+
+    <div class="stats__container">
+
+      <!-- En-tête -->
+      <header class="stats__header">
+        <span class="stats__label">Impact réel</span>
+        <h2 class="stats__title" id="stats-heading">
+          Des chiffres qui <span class="stats__title--accent">parlent</span>
+        </h2>
+        <p class="stats__subtitle">
+          Depuis 2019, NexaLab accompagne des entreprises africaines avec des
+          solutions qui livrent des résultats mesurables.
+        </p>
+      </header>
+
+      <!-- Grille principale des stats — ligne du haut (4 grandes stats) -->
+      <div class="stats__grid stats__grid--primary">
+
+        <!-- Stat 1 — Projets livrés -->
+        <article class="stat-card stat-card--highlight" aria-label="Projets livrés">
+          <div class="stat-card__inner">
+            <div class="stat-card__value-row">
+              <span class="stat-card__number">142</span>
+              <span class="stat-card__unit">+</span>
+            </div>
+            <h3 class="stat-card__label">Projets livrés</h3>
+            <p class="stat-card__detail">
+              Solutions déployées en production dans des secteurs variés :
+              finance, agriculture, logistique, santé et éducation.
+            </p>
+            <!-- Mini sparkline décorative SVG -->
+            <div class="stat-card__sparkline" aria-hidden="true">
+              <svg viewBox="0 0 120 36" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <polyline
+                  points="0,30 15,24 30,26 45,18 60,20 75,12 90,8 105,5 120,2"
+                  stroke="#4f8ef7"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <polyline
+                  points="0,36 0,30 15,24 30,26 45,18 60,20 75,12 90,8 105,5 120,2 120,36"
+                  fill="url(#sparkGrad)"
+                />
+                <defs>
+                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%"   stop-color="#4f8ef7" stop-opacity="0.18"/>
+                    <stop offset="100%" stop-color="#4f8ef7" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Stat 2 — Pays d'intervention -->
+        <article class="stat-card" aria-label="Pays d'intervention">
+          <div class="stat-card__inner">
+            <div class="stat-card__icon" aria-hidden="true">
+              <!-- Icône globe SVG -->
+              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/>
+                <ellipse cx="14" cy="14" rx="5" ry="11" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="3" y1="14" x2="25" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="5"  y1="9"  x2="23" y2="9"  stroke="currentColor" stroke-width="1.5"/>
+                <line x1="5"  y1="19" x2="23" y2="19" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="stat-card__value-row">
+              <span class="stat-card__number">17</span>
+              <span class="stat-card__unit">pays</span>
+            </div>
+            <h3 class="stat-card__label">Présence africaine</h3>
+            <p class="stat-card__detail">
+              De Dakar à Nairobi, de Lagos à Abidjan — NexaLab est ancré
+              dans le tissu économique du continent.
+            </p>
+          </div>
+        </article>
+
+        <!-- Stat 3 — Partenaires actifs -->
+        <article class="stat-card" aria-label="Partenaires actifs">
+          <div class="stat-card__inner">
+            <div class="stat-card__icon" aria-hidden="true">
+              <!-- Icône handshake SVG -->
+              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 17 L8 11 L12 14 L16 10 L20 13 L26 7"
+                      stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 21 L8 15 L11 17" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="20" cy="9" r="2" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="stat-card__value-row">
+              <span class="stat-card__number">58</span>
+              <span class="stat-card__unit">+</span>
+            </div>
+            <h3 class="stat-card__label">Partenaires actifs</h3>
+            <p class="stat-card__detail">
+              Entreprises, institutions publiques, ONG et startups
+              engagées dans l'écosystème NexaLab.
+            </p>
+          </div>
+        </article>
+
+        <!-- Stat 4 — Taux de satisfaction -->
+        <article class="stat-card" aria-label="Taux de satisfaction client">
+          <div class="stat-card__inner">
+            <div class="stat-card__icon" aria-hidden="true">
+              <!-- Icône étoile SVG -->
+              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <polygon
+                  points="14,3 17,10 25,10 19,15 21,23 14,18 7,23 9,15 3,10 11,10"
+                  stroke="currentColor" stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-card__value-row">
+              <span class="stat-card__number">96</span>
+              <span class="stat-card__unit">%</span>
+            </div>
+            <h3 class="stat-card__label">Satisfaction client</h3>
+            <p class="stat-card__detail">
+              Mesuré via des audits post-livraison indépendants sur
+              l'ensemble de nos projets actifs.
+            </p>
+            <!-- Barre de progression CSS -->
+            <div class="stat-card__progress-bar" role="progressbar"
+                 aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="96% de satisfaction">
+              <div class="stat-card__progress-fill" style="--progress: 96%"></div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /.stats__grid--primary -->
+
+      <!-- Ligne secondaire — 3 stats plus petites + 1 encart texte -->
+      <div class="stats__grid stats__grid--secondary">
+
+        <!-- Encart mission — côté gauche -->
+        <div class="stats__callout">
+          <p class="stats__callout-quote">
+            "Notre mission n'est pas de copier les modèles occidentaux —
+            c'est de construire <strong>des technologies qui répondent aux défis du continent</strong>
+            avec la même rigueur et la même ambition."
+          </p>
+          <footer class="stats__callout-author">
+            <div class="stats__callout-avatar" aria-hidden="true">AK</div>
+            <div class="stats__callout-meta">
+              <span class="stats__callout-name">Amadou Koné</span>
+              <span class="stats__callout-role">CEO & Co-fondateur, NexaLab</span>
+            </div>
+          </footer>
+        </div>
+
+        <!-- Stats secondaires côté droit -->
+        <div class="stats__secondary-group">
+
+          <!-- Stat — Membres d'équipe -->
+          <article class="stat-card stat-card--small" aria-label="Membres d'équipe">
+            <div class="stat-card__inner">
+              <div class="stat-card__value-row">
+                <span class="stat-card__number">34</span>
+                <span class="stat-card__unit">experts</span>
+              </div>
+              <h3 class="stat-card__label">Équipe core</h3>
+              <p class="stat-card__detail">
+                Ingénieurs, data scientists et designers répartis sur 5 hubs en Afrique.
+              </p>
+            </div>
+          </article>
+
+          <!-- Stat — Années d'expérience -->
+          <article class="stat-card stat-card--small" aria-label="Années d'expérience">
+            <div class="stat-card__inner">
+              <div class="stat-card__value-row">
+                <span class="stat-card__number">6</span>
+                <span class="stat-card__unit">ans</span>
+              </div>
+              <h3 class="stat-card__label">D'expérience terrain</h3>
+              <p class="stat-card__detail">
+                Fondée en 2019, NexaLab a traversé deux cycles économiques
+                en maintenant une croissance à deux chiffres.
+              </p>
+            </div>
+          </article>
+
+          <!-- Stat — Lignes de code -->
+          <article class="stat-card stat-card--small" aria-label="Lignes de code livrées">
+            <div class="stat-card__inner">
+              <div class="stat-card__value-row">
+                <span class="stat-card__number">2.4M</span>
+              </div>
+              <h3 class="stat-card__label">Lignes de code</h3>
+              <p class="stat-card__detail">
+                En production, auditées, documentées et maintenues activement
+                dans nos systèmes clients.
+              </p>
+            </div>
+          </article>
+
+        </div><!-- /.stats__secondary-group -->
+
+      </div><!-- /.stats__grid--secondary -->
+
+      <!-- Bande de logos/tags sectoriels — style Starlink coverage -->
+      <div class="stats__sectors" aria-label="Secteurs d'intervention">
+        <span class="stats__sector-label">Secteurs couverts</span>
+        <ul class="stats__sector-list">
+          <li class="stats__sector-item">Finance & Fintech</li>
+          <li class="stats__sector-item">Agriculture</li>
+          <li class="stats__sector-item">Santé</li>
+          <li class="stats__sector-item">Logistique</li>
+          <li class="stats__sector-item">Éducation</li>
+          <li class="stats__sector-item">Énergie</li>
+          <li class="stats__sector-item">Gouvernance</li>
+          <li class="stats__sector-item">Commerce</li>
+        </ul>
+      </div>
+
+    </div><!-- /.stats__container -->
+
+  </section>
+
  <footer>
     <div>
         <h2>NexaLab</h2>
