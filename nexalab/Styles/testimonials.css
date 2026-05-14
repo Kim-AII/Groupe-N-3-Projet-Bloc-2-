@@ -1,0 +1,411 @@
+
+/* ══════════════════════════════════════════
+   1. SECTION WRAPPER
+══════════════════════════════════════════ */
+
+.testimonials {
+  padding:          clamp(var(--space-xl), 8vw, var(--space-3xl))
+                    clamp(var(--space-md), 4vw, var(--space-xl));
+  background-color: var(--color-bg);
+  max-width:        1200px;
+  margin:           0 auto;
+  display:          flex;
+  flex-direction:   column;
+  gap:              clamp(var(--space-lg), 4vw, var(--space-xl));
+}
+
+
+/* ══════════════════════════════════════════
+   2. EN-TÊTE DE SECTION
+══════════════════════════════════════════ */
+
+.testimonials__header {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  text-align:     center;
+  gap:            var(--space-md);
+}
+
+/* Badge label */
+.testimonials__label {
+  font-family:    var(--font-heading);
+  font-size:      0.7rem;
+  font-weight:    600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+  border:         1px solid var(--color-accent);
+  padding:        0.25rem 0.75rem;
+  border-radius:  var(--radius-sm);
+}
+
+/* Titre */
+.testimonials__title {
+  font-family: var(--font-heading);
+  font-size:   clamp(1.75rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color:       var(--color-text);
+}
+
+.testimonials__title--accent { color: var(--color-accent); }
+
+/* Sous-titre */
+.testimonials__subtitle {
+  font-size:   1rem;
+  color:       var(--color-text-muted);
+  max-width:   520px;
+  line-height: 1.65;
+}
+
+
+/* ══════════════════════════════════════════
+   3. GRILLE BENTO — layout 2 colonnes
+      (même logique que services__grid)
+══════════════════════════════════════════ */
+
+.testimonials__grid {
+  display:               grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap:                   var(--space-lg);
+}
+
+/* Colonne droite : 2 cartes empilées */
+.testimonials__column {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-lg);
+}
+
+
+/* ══════════════════════════════════════════
+   4. CARTE TÉMOIGNAGE — base commune
+══════════════════════════════════════════ */
+
+.testi-card {
+  position:      relative;
+  overflow:      hidden;
+  border-radius: var(--radius-lg);
+  border:        1px solid var(--color-border);
+  background:    var(--color-surface);
+  transition:    border-color var(--transition-base),
+                 transform    var(--transition-smooth),
+                 box-shadow   var(--transition-smooth);
+}
+
+.testi-card:hover {
+  border-color: var(--color-border-hover);
+  transform:    translateY(-4px);
+  box-shadow:   0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0   30px var(--color-accent-glow);
+}
+
+/* Contenu interne */
+.testi-card__inner {
+  position:       relative;
+  z-index:        1;
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-md);
+  padding:        clamp(var(--space-lg), 3vw, var(--space-xl));
+  height:         100%;
+}
+
+
+/* ══════════════════════════════════════════
+   5. COMPOSANTS INTERNES DES CARTES
+══════════════════════════════════════════ */
+
+/* Guillemet décoratif (carte featured seulement) */
+.testi-card__quote-icon {
+  width:   28px;
+  height:  22px;
+  color:   var(--color-accent);
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+/* Étoiles */
+.testi-card__stars {
+  display:     flex;
+  align-items: center;
+  gap:         2px;
+  font-size:   0.85rem;
+  color:       var(--color-accent);
+  letter-spacing: 2px;
+}
+
+/* Texte du témoignage */
+.testi-card__text {
+  font-size:   0.92rem;
+  color:       var(--color-text-dim);
+  line-height: 1.75;
+  font-style:  normal;     /* pas d'italique générique */
+  flex:        1;
+}
+
+/* Zone auteur */
+.testi-card__author {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-sm);
+  margin-top:  auto;
+  padding-top: var(--space-md);
+  border-top:  1px solid var(--color-border);
+}
+
+/* Avatar — cercle avec initiales */
+.testi-card__avatar {
+  width:           40px;
+  height:          40px;
+  border-radius:   50%;
+  background:      var(--color-accent-dark);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-family:     var(--font-heading);
+  font-size:       0.75rem;
+  font-weight:     700;
+  color:           #fff;
+  flex-shrink:     0;
+  border:          1px solid rgba(79, 142, 247, 0.3);
+}
+
+/* Infos auteur */
+.testi-card__author-info {
+  display:        flex;
+  flex-direction: column;
+  gap:            2px;
+  min-width:      0;
+}
+
+.testi-card__name {
+  font-family:  var(--font-heading);
+  font-size:    0.9rem;
+  font-weight:  600;
+  color:        var(--color-text);
+  white-space:  nowrap;
+  overflow:     hidden;
+  text-overflow: ellipsis;
+}
+
+.testi-card__role {
+  font-size:    0.78rem;
+  color:        var(--color-text-muted);
+  white-space:  nowrap;
+  overflow:     hidden;
+  text-overflow: ellipsis;
+}
+
+/* Tag de service (carte wide) */
+.testi-card__tag {
+  display:        inline-block;
+  margin-top:     4px;
+  font-family:    var(--font-heading);
+  font-size:      0.65rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--color-accent);
+  background:     rgba(79, 142, 247, 0.1);
+  border:         1px solid rgba(79, 142, 247, 0.25);
+  padding:        0.2rem 0.6rem;
+  border-radius:  var(--radius-sm);
+  width:          fit-content;
+}
+
+
+/* ══════════════════════════════════════════
+   6. VARIANTE — CARTE FEATURED (grande)
+══════════════════════════════════════════ */
+
+.testi-card--featured .testi-card__inner {
+  padding:    clamp(var(--space-lg), 4vw, var(--space-2xl));
+  min-height: clamp(0px, 32vw, 360px);
+}
+
+.testi-card--featured .testi-card__text {
+  font-size: 1rem;
+}
+
+/* Halo décoratif — même logique que service-card__glow */
+.testi-card__glow {
+  position:       absolute;
+  top:            -60px;
+  right:          -60px;
+  width:          300px;
+  height:         300px;
+  border-radius:  50%;
+  background:     radial-gradient(circle, rgba(79, 142, 247, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index:        0;
+  transition:     opacity var(--transition-smooth);
+}
+
+.testi-card--featured:hover .testi-card__glow { opacity: 1.6; }
+
+
+/* ══════════════════════════════════════════
+   7. VARIANTE — CARTE SECONDAIRE
+══════════════════════════════════════════ */
+
+.testi-card--secondary {
+  flex: 1;
+}
+
+.testi-card--secondary .testi-card__text {
+  font-size: 0.88rem;
+}
+
+
+/* ══════════════════════════════════════════
+   8. VARIANTE — CARTE WIDE (pleine largeur)
+══════════════════════════════════════════ */
+
+.testi-card--wide {
+  /* Hors de la grille bento, pleine largeur naturelle */
+}
+
+/* Bande décorative verticale gauche — même que service-card__stripe */
+.testi-card__stripe {
+  position:   absolute;
+  inset:      0 auto 0 0;
+  width:      3px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));
+  opacity:    0.7;
+  transition: opacity var(--transition-base);
+}
+
+.testi-card--wide:hover .testi-card__stripe { opacity: 1; }
+
+/* Layout interne wide : côte à côte */
+.testi-card--wide .testi-card__inner {
+  flex-direction: row;
+  align-items:    center;
+  gap:            var(--space-xl);
+  flex-wrap:      wrap;
+}
+
+.testi-card__wide-content {
+  flex:      1;
+  min-width: 240px;
+  display:   flex;
+  flex-direction: column;
+  gap:       var(--space-sm);
+}
+
+.testi-card--wide .testi-card__author--wide {
+  flex-shrink:  0;
+  min-width:    200px;
+  max-width:    240px;
+  flex-direction: column;
+  align-items:  flex-start;
+  border-top:   none;
+  padding-top:  0;
+  border-left:  1px solid var(--color-border);
+  padding-left: var(--space-xl);
+  margin-top:   0;
+}
+
+/* Avatar plus grand pour la carte wide */
+.testi-card__avatar--lg {
+  width:     52px;
+  height:    52px;
+  font-size: 0.9rem;
+}
+
+.testi-card--wide .testi-card__text {
+  font-size: 0.95rem;
+}
+
+
+/* ══════════════════════════════════════════
+   9. BANDE LOGOS CLIENTS
+══════════════════════════════════════════ */
+
+.testimonials__logos {
+  display:       flex;
+  align-items:   center;
+  flex-wrap:     wrap;
+  gap:           clamp(0.5rem, 2vw, 1.5rem);
+  padding:       clamp(0.75rem, 2vw, 1.25rem) clamp(1rem, 3vw, 1.5rem);
+  border-radius: var(--radius-lg);
+  border:        1px solid var(--color-border);
+  background:    rgba(10, 12, 16, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+.testimonials__logos-label {
+  font-family:    var(--font-heading);
+  font-size:      0.7rem;
+  font-weight:    600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--color-text-muted);
+  white-space:    nowrap;
+}
+
+.testimonials__logos-list {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         0.5rem;
+  align-items: center;
+}
+
+.testimonials__logo-item {
+  font-family:   var(--font-heading);
+  font-size:     0.82rem;
+  font-weight:   600;
+  color:         var(--color-text-dim);
+  padding:       0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border:        1px solid var(--color-border);
+  background:    rgba(255, 255, 255, 0.03);
+  white-space:   nowrap;
+  letter-spacing: 0.04em;
+  transition:    border-color 150ms ease, color 150ms ease;
+}
+
+.testimonials__logo-item:hover {
+  border-color: var(--color-accent);
+  color:        var(--color-accent);
+}
+
+.testimonials__logo-sep {
+  color:     var(--color-border);
+  font-size: 1.1rem;
+}
+
+
+/* ══════════════════════════════════════════
+   10. RESPONSIVE — MOBILE (≤ 768px)
+══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Grille bento → colonne unique */
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Carte featured : hauteur min supprimée */
+  .testi-card--featured {
+    min-height: unset;
+  }
+
+  /* Carte wide : layout vertical */
+  .testi-card--wide .testi-card__inner {
+    flex-direction: column;
+  }
+
+  .testi-card--wide .testi-card__author--wide {
+    max-width:    100%;
+    border-left:  none;
+    padding-left: 0;
+    border-top:   1px solid var(--color-border);
+    padding-top:  var(--space-md);
+    flex-direction: row;
+    align-items:  center;
+  }
+}
