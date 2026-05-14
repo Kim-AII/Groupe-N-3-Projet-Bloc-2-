@@ -21,7 +21,7 @@ body {
     position: relative;
     /* Remplace 'votre-image.jpg' par ton lien */
     background: linear-gradient(rgba(27, 27, 27, 0.85), rgba(0, 0, 0, 0.85)), 
-                url('/Groupe-N-3-Projet-Bloc-2-/assets/img/about.jpg') no-repeat center center/cover;
+                url('/assets/img/about.jpg') no-repeat center center/cover;
 }
 
 .container {
