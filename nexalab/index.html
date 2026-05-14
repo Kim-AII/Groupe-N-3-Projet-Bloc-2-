@@ -10,6 +10,10 @@
 <link rel="stylesheet" href="styles/about.css" />
 <link rel="stylesheet" href="styles/services.css" />
 <link rel="stylesheet" href="styles/stats.css" />
+<link rel="stylesheet" href="styles/testimonials.css" />
+<link rel="stylesheet" href="styles/team.css" />
+<link rel="stylesheet" href="styles/footer.css" />
+<link rel="stylesheet" href="styles/contact.css" />
 <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 ...
@@ -296,10 +300,10 @@
     </div><!-- /.services__grid -->
 
   </section>
-    <!-- ========   SECTION STATS — ======== -->
+    <!-- ========== SECTION STATS ======== -->
   <section class="stats" id="stats" aria-labelledby="stats-heading">
 
-    <!-- Bande de fond décorative (effet Starlink) -->
+    <!-- Bande de fond décorative  -->
     <div class="stats__bg-line" aria-hidden="true"></div>
 
     <div class="stats__container">
@@ -340,11 +344,11 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                />
+                /><!-- Ligne de la courbe -->
                 <polyline
                   points="0,36 0,30 15,24 30,26 45,18 60,20 75,12 90,8 105,5 120,2 120,36"
                   fill="url(#sparkGrad)"
-                />
+                /> <!-- Dégradé de remplissage pour la zone sous la courbe -->
                 <defs>
                   <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%"   stop-color="#4f8ef7" stop-opacity="0.18"/>
@@ -361,13 +365,9 @@
           <div class="stat-card__inner">
             <div class="stat-card__icon" aria-hidden="true">
               <!-- Icône globe SVG -->
-              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.5"/>
-                <ellipse cx="14" cy="14" rx="5" ry="11" stroke="currentColor" stroke-width="1.5"/>
-                <line x1="3" y1="14" x2="25" y2="14" stroke="currentColor" stroke-width="1.5"/>
-                <line x1="5"  y1="9"  x2="23" y2="9"  stroke="currentColor" stroke-width="1.5"/>
-                <line x1="5"  y1="19" x2="23" y2="19" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
+             <svg height="200" width="200" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+	<path d="M.034 16.668C.388 25.179 7.403 32 16 32s15.612-6.821 15.966-15.332A.493.493 0 0 0 32 16.5c0-.036-.013-.067-.02-.1c.003-.134.02-.265.02-.4c0-8.822-7.178-16-16-16S0 7.178 0 16c0 .135.017.266.02.4c-.007.033-.02.064-.02.1c0 .06.015.115.034.168zm24.887 6.074a21.921 21.921 0 0 0-4.215-1.271c.158-1.453.251-2.962.28-4.47h4.98c-.091 2.054-.456 3.993-1.045 5.741zM26.965 17h3.984a14.885 14.885 0 0 1-2.663 7.579a17.158 17.158 0 0 0-2.457-1.44c.645-1.869 1.042-3.943 1.136-6.139zm-14.576 5.286A23.416 23.416 0 0 1 16 22c1.224 0 2.433.102 3.61.286C18.916 27.621 17.4 31 16 31s-2.916-3.379-3.611-8.714zm1.519 8.378c-2.751-.882-5.078-3.471-6.482-6.984a20.873 20.873 0 0 1 3.99-1.217c.459 3.496 1.298 6.542 2.492 8.201zm-1.634-19.955A24.43 24.43 0 0 0 16 11a24.43 24.43 0 0 0 3.726-.291c.172 1.62.274 3.388.274 5.291h-8c0-1.903.102-3.671.274-5.291zM19.985 17a49.022 49.022 0 0 1-.26 4.291A24.397 24.397 0 0 0 16 21a24.42 24.42 0 0 0-3.726.291a48.668 48.668 0 0 1-.26-4.291h7.971zm.6 5.463c1.404.282 2.743.692 3.99 1.217c-1.404 3.513-3.731 6.102-6.482 6.984c1.193-1.659 2.032-4.705 2.492-8.201zM21 16c0-1.836-.102-3.696-.294-5.47c1.48-.292 2.896-.72 4.215-1.271C25.605 11.288 26 13.574 26 16h-5zm-.415-6.463c-.46-3.496-1.298-6.543-2.493-8.201c2.751.882 5.078 3.471 6.482 6.984a20.792 20.792 0 0 1-3.989 1.217zm-.974.177C18.433 9.898 17.224 10 16 10s-2.433-.102-3.611-.286C13.084 4.379 14.6 1 16 1c1.4 0 2.916 3.379 3.611 8.714zm-8.196-.177a20.895 20.895 0 0 1-3.99-1.217c1.404-3.513 3.731-6.102 6.482-6.984c-1.193 1.659-2.032 4.705-2.492 8.201zm-.121.993A51.315 51.315 0 0 0 11 16H6c0-2.426.395-4.712 1.079-6.742c1.319.552 2.735.979 4.215 1.272zm-.28 6.47c.029 1.508.122 3.017.28 4.471c-1.48.292-2.896.72-4.215 1.271c-.589-1.748-.954-3.687-1.045-5.742h4.98zM6.17 23.139a17.24 17.24 0 0 0-2.456 1.44A14.882 14.882 0 0 1 1.051 17h3.984c.094 2.196.491 4.27 1.135 6.139zM4.313 25.38a16.126 16.126 0 0 1 2.207-1.305c1.004 2.485 2.449 4.548 4.186 5.943a15.05 15.05 0 0 1-6.393-4.638zm16.981 4.637c1.738-1.394 3.182-3.458 4.186-5.943c.79.384 1.522.826 2.207 1.305a15.033 15.033 0 0 1-6.393 4.638zM27 16c0-2.567-.428-4.987-1.17-7.139c.88-.422 1.698-.907 2.457-1.44A14.91 14.91 0 0 1 31 16h-4zm.688-9.38c-.685.479-1.417.921-2.207 1.305c-1.004-2.485-2.449-4.549-4.186-5.943a15.062 15.062 0 0 1 6.393 4.638zM10.706 1.983C8.968 3.377 7.524 5.441 6.52 7.926A16.173 16.173 0 0 1 4.313 6.62a15.04 15.04 0 0 1 6.393-4.637zM3.714 7.421a17.185 17.185 0 0 0 2.456 1.44A21.954 21.954 0 0 0 5 16H1c0-3.19 1.009-6.145 2.714-8.579z" fill="currentColor"/>
+</svg>
             </div>
             <div class="stat-card__value-row">
               <span class="stat-card__number">17</span>
@@ -386,14 +386,9 @@
           <div class="stat-card__inner">
             <div class="stat-card__icon" aria-hidden="true">
               <!-- Icône handshake SVG -->
-              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2 17 L8 11 L12 14 L16 10 L20 13 L26 7"
-                      stroke="currentColor" stroke-width="1.5"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M2 21 L8 15 L11 17" stroke="currentColor" stroke-width="1.5"
-                      stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="20" cy="9" r="2" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
+             <svg height="200" width="200" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+	<path d="M13 3a5.393 5.393 0 0 1-1.902 1.178c-.748.132-2.818-.828-3.838.152c-.17.17-.38.34-.6.51c-.48-.21-1.22-.53-1.76-.84S3 3 3 3L0 6.5s.74 1 1.2 1.66c.3.44.67 1.11.91 1.56l-.34.4a.876.876 0 0 0 .15 1a.833.833 0 0 0 1.002-.002a.62.62 0 0 0 .077.881a.994.994 0 0 0 1.006-.002a.806.806 0 0 0-.003 1.005a1.012 1.012 0 0 0 .892-.114a.822.822 0 0 0 .187.912a1.093 1.093 0 0 0 1.054-.092l.516-.467c.472.47 1.123.761 1.842.761l.061-.001a1.311 1.311 0 0 0 1.094-.791c.146.056.312.094.488.094c.236 0 .455-.068.64-.185c.585-.387.445-.687.445-.687a1.07 1.07 0 0 0 1.229-.279a.996.996 0 0 0 .138-1.215a.036.036 0 0 0 .021.005c.421 0 .787-.232.978-.574a1.564 1.564 0 0 0-.191-1.48l.003.005c.82-.16.79-.57 1.19-1.17a4.725 4.725 0 0 1 1.387-1.208zm-.05 7.06c-.44.44-.78.25-1.53-.32S9.18 8.1 9.18 8.1c.061.305.202.57.401.781c.319.359 1.269 1.179 1.719 1.599c.28.26 1 .78.58 1.18s-.75 0-1.44-.56s-2.23-1.94-2.23-1.94a.937.937 0 0 0 .27.72c.17.2 1.12 1.12 1.52 1.54s.75.67.41 1s-1.03-.19-1.41-.58c-.59-.57-1.76-1.63-1.76-1.63l-.001.053c0 .284.098.544.263.75c.288.378.848.868 1.188 1.248s.54.7 0 1s-1.34-.44-1.69-.8v-.002a.411.411 0 0 0-.1-.269a.896.896 0 0 0-.906-.188A.609.609 0 0 0 6 11.1a.754.754 0 0 0-.912.001a.61.61 0 0 0-.085-.95a1 1 0 0 0-1.174.08a.66.66 0 0 0-.068-.911a.996.996 0 0 0-1.186-.128L1.91 8.069c-.46-.73-1-1.49-1-1.49l2.28-2.77s.81.5 1.48.88c.33.19.9.44 1.33.64c-.68.51-1.25 1-1.08 1.34a1.834 1.834 0 0 0 2.087.036a2.41 2.41 0 0 1 1.343-.403c.347 0 .677.072.976.203c.554.374 1.574 1.294 2.504 1.874c1.17.85 1.4 1.4 1.12 1.68z" fill="currentColor"/>
+</svg>
             </div>
             <div class="stat-card__value-row">
               <span class="stat-card__number">58</span>
@@ -412,13 +407,9 @@
           <div class="stat-card__inner">
             <div class="stat-card__icon" aria-hidden="true">
               <!-- Icône étoile SVG -->
-              <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon
-                  points="14,3 17,10 25,10 19,15 21,23 14,18 7,23 9,15 3,10 11,10"
-                  stroke="currentColor" stroke-width="1.5"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              <svg height="200" width="200" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	<path d="M21.995 9.933a.5.5 0 0 0-.423-.568l-6.304-.919l-2.82-5.73a.52.52 0 0 0-.896 0l-2.82 5.73l-6.304.92a.5.5 0 0 0-.278.852l4.563 4.46l-1.077 6.3a.5.5 0 0 0 .726.527L12 18.532l5.638 2.973a.506.506 0 0 0 .316.05a.5.5 0 0 0 .41-.576l-1.077-6.3l4.563-4.461a.5.5 0 0 0 .145-.285zM16.4 14.147a.501.501 0 0 0-.143.442l.95 5.558l-4.974-2.623a.506.506 0 0 0-.466 0l-4.974 2.623l.95-5.558a.501.501 0 0 0-.143-.442L3.572 10.21l5.565-.81a.501.501 0 0 0 .376-.275L12 4.07l2.487 5.054a.5.5 0 0 0 .376.274l5.565.811l-4.028 3.938z" fill="currentColor"/>
+</svg>
             </div>
             <div class="stat-card__value-row">
               <span class="stat-card__number">96</span>
@@ -432,8 +423,8 @@
             <!-- Barre de progression CSS -->
             <div class="stat-card__progress-bar" role="progressbar"
                  aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"
-                 aria-label="96% de satisfaction">
-              <div class="stat-card__progress-fill" style="--progress: 96%"></div>
+                 aria-label="96% de satisfaction"><!-- Fond de la barre -->
+              <div class="stat-card__progress-fill" style="--progress: 96%"></div><!-- Barre de progression -->
             </div>
           </div>
         </article>
@@ -509,7 +500,7 @@
 
       </div><!-- /.stats__grid--secondary -->
 
-      <!-- Bande de logos/tags sectoriels — style Starlink coverage -->
+      <!-- Bande de logos/tags sectoriels-->
       <div class="stats__sectors" aria-label="Secteurs d'intervention">
         <span class="stats__sector-label">Secteurs couverts</span>
         <ul class="stats__sector-list">
@@ -527,6 +518,7 @@
     </div><!-- /.stats__container -->
 
   </section>
+
 
  <footer class="footer">
     <div>
