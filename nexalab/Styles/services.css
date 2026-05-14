@@ -1,29 +1,25 @@
-/* =============================================================
-   services.css — NexaLab
-   Section : Nos expertises / Services
-   Layout : bento-grid (Flexbox + Grid)
-   Responsive : mobile ≤768px · tablette ≤1024px · desktop
-============================================================= */
-
-/* ── Section wrapper ────────────────────────────────────────── */
+/* ── Section wrapper ─────────────────────────────────────────
+   clamp() remplace 3 blocs de padding dans les media queries
+──────────────────────────────────────────────────────────── */
 .services {
-  padding: var(--space-3xl) var(--space-xl);
+  padding:          clamp(var(--space-xl), 8vw, var(--space-3xl))
+                    clamp(var(--space-md), 4vw, var(--space-xl));
   background-color: var(--color-bg);
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width:        1200px;
+  margin:           0 auto;
 }
 
-/* ── En-tête de section ─────────────────────────────────────── */
+
+/* ── En-tête de section ─── */
 .services__header {
-  display: flex;
+  display:        flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-2xl);
+  align-items:    center;
+  text-align:     center;
+  gap:            var(--space-md);
+  margin-bottom:  var(--space-2xl);
 }
 
-/* Label au-dessus du titre — style "INNOVATION" de la charte */
 .services__label {
   font-family:    var(--font-heading);
   font-size:      0.7rem;
@@ -36,113 +32,100 @@
   border-radius:  var(--radius-sm);
 }
 
+/* clamp() → plus de surcharger font-size en mobile */
 .services__title {
   font-family: var(--font-heading);
-  font-size:   clamp(2rem, 4vw, 3rem);
+  font-size:   clamp(1.75rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.1;
   color:       var(--color-text);
 }
 
-/* Mot en bleu dans le titre */
-.services__title--accent {
-  color: var(--color-accent);
-}
+.services__title--accent { color: var(--color-accent); }
 
 .services__subtitle {
-  font-family: var(--font-body);
   font-size:   1rem;
   color:       var(--color-text-muted);
   max-width:   520px;
   line-height: 1.65;
 }
 
-/* ── Grille bento principale ─────────────────────────────────
-   Desktop : [carte featured large | colonne 2 cartes empilées]
-             [carte wide pleine largeur]
-   Tablette : 2 colonnes égales
-   Mobile   : 1 colonne
-─────────────────────────────────────────────────────────────── */
+
+/* ── Bento grid principal ──── */
 .services__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;   /* featured + colonne droite */
-  grid-template-rows:    auto auto;
-  gap: var(--space-lg);
+  display:               grid;
+  grid-template-columns: 1.4fr 1fr;/*définit deux colonnes avec des proportions différentes*/
+  gap:                   var(--space-lg);
 }
 
-/* Colonne droite : deux cartes empilées avec Flexbox */
+/* Colonne droite : 2 cartes secondaires empilées en Flexbox */
 .services__column {
   display:        flex;
   flex-direction: column;
   gap:            var(--space-lg);
 }
 
-/* ── Carte service — base commune ───────────────────────────── */
+
+/* ── Carte service — base commune─── */
 .service-card {
   position:      relative;
   overflow:      hidden;
   border-radius: var(--radius-lg);
   border:        1px solid var(--color-border);
   background:    var(--color-surface);
-  transition:
-    border-color var(--transition-base),
-    transform    var(--transition-smooth),
-    box-shadow   var(--transition-smooth);
+  transition:    border-color var(--transition-base),
+                 transform    var(--transition-smooth),
+                 box-shadow   var(--transition-smooth);
 }
 
-/* Hover commun */
 .service-card:hover {
   border-color: var(--color-border-hover);
   transform:    translateY(-4px);
   box-shadow:   0 20px 60px rgba(0, 0, 0, 0.4),
-                0 0 30px var(--color-accent-glow);
+                0 0   30px var(--color-accent-glow);
 }
 
-/* Inner padding */
+/* clamp() → padding fluide, élimine les surcharges tablette/mobile */
 .service-card__inner {
   position:       relative;
   z-index:        1;
   display:        flex;
   flex-direction: column;
   gap:            var(--space-md);
-  padding:        var(--space-xl);
+  padding:        clamp(var(--space-lg), 3vw, var(--space-xl));/*crée un espacement interne fluide qui s'adapte à la taille de l'écran*/
   height:         100%;
 }
 
-/* ── Top row : icône + tag ───────────────────────────────────── */
+
+/* ── Composants internes des cartes ───────── */
 .service-card__top {
   display:     flex;
   align-items: center;
   gap:         var(--space-md);
 }
 
-/* Icône encadrée */
 .service-card__icon {
-  width:         52px;
-  height:        52px;
-  flex-shrink:   0;
-  display:       flex;
-  align-items:   center;
+  width:           52px;
+  height:          52px;
+  flex-shrink:     0;/*empêche cet élément de se rétrécir lorsqu'il fait partie d'un conteneur Flexbox serré */
+  display:         flex;
+  align-items:     center;
   justify-content: center;
-  border-radius: var(--radius-md);
-  border:        1px solid var(--color-border);
-  background:    rgba(79, 142, 247, 0.06);
-  color:         var(--color-accent);
-  transition:    background var(--transition-base),
-                 border-color var(--transition-base);
+  border-radius:   var(--radius-md);
+  border:          1px solid var(--color-border);
+  background:      rgba(79, 142, 247, 0.06);
+  color:           var(--color-accent);
+  transition:      background var(--transition-base),
+                   border-color var(--transition-base);
 }
 
-.service-card__icon svg {
-  width:  26px;
-  height: 26px;
-}
+.service-card__icon svg { width: 26px; height: 26px; }
 
 .service-card:hover .service-card__icon {
   background:   rgba(79, 142, 247, 0.14);
   border-color: var(--color-accent);
 }
 
-/* Badge tag — IA / IoT / DATA / CYBER */
 .service-card__tag {
   font-family:    var(--font-heading);
   font-size:      0.65rem;
@@ -156,7 +139,6 @@
   border-radius:  var(--radius-sm);
 }
 
-/* ── Corps texte ─────────────────────────────────────────────── */
 .service-card__body {
   display:        flex;
   flex-direction: column;
@@ -171,13 +153,11 @@
 }
 
 .service-card__desc {
-  font-family: var(--font-body);
   font-size:   0.9rem;
   color:       var(--color-text-dim);
   line-height: 1.65;
 }
 
-/* ── Liste de fonctionnalités (carte featured uniquement) ─────── */
 .service-card__features {
   display:        flex;
   flex-direction: column;
@@ -189,51 +169,41 @@
   display:     flex;
   align-items: center;
   gap:         0.6rem;
-  font-family: var(--font-body);
   font-size:   0.85rem;
   color:       var(--color-text-dim);
 }
 
-/* Pastille bleue devant chaque item */
 .service-card__feature-dot {
-  width:        6px;
-  height:       6px;
+  width:         6px;
+  height:        6px;
   border-radius: 50%;
-  background:   var(--color-accent);
-  flex-shrink:  0;
+  background:    var(--color-accent);
+  flex-shrink:   0;
 }
 
-/* ── CTA lien ────────────────────────────────────────────────── */
 .service-card__cta {
-  display:      inline-flex;
-  align-items:  center;
-  gap:          0.4rem;
-  margin-top:   auto;           /* colle en bas de la carte */
-  font-family:  var(--font-heading);
-  font-size:    0.85rem;
-  font-weight:  600;
-  color:        var(--color-accent);
-  transition:   gap var(--transition-fast),
-                color var(--transition-fast);
+  display:     inline-flex;
+  align-items: center;
+  gap:         0.4rem;
+  margin-top:  auto;
+  font-family: var(--font-heading);
+  font-size:   0.85rem;
+  font-weight: 600;
+  color:       var(--color-accent);
+  transition:  gap var(--transition-fast), color var(--transition-fast);
 }
 
-.service-card__cta:hover {
-  gap:   0.7rem;
-  color: #7eabff;
-}
+.service-card__cta:hover { gap: 0.7rem; color: #7eabff; }
 
-/* ── Carte FEATURED (IA) ─────────────────────────────────────── */
-.service-card--featured {
-  grid-row: 1;                /* ligne 1, colonne 1 implicite */
-}
 
+/* ── Carte FEATURED──── */
 .service-card--featured .service-card__inner {
-  padding:    var(--space-2xl);
-  min-height: 380px;
+  padding:    clamp(var(--space-lg), 4vw, var(--space-2xl));
+  min-height: clamp(0px, 32vw, 380px);
 }
 
 .service-card--featured .service-card__name {
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 2.5vw, 1.5rem);
 }
 
 .service-card--featured .service-card__desc {
@@ -241,148 +211,68 @@
   max-width: 380px;
 }
 
-/* Halo lumineux en fond (déco) */
+/* Halo décoratif en fond */
 .service-card__glow {
-  position: absolute;
-  top:      -60px;
-  left:     -60px;
-  width:    300px;
-  height:   300px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(79, 142, 247, 0.08) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: 0;
-  transition: opacity var(--transition-smooth);
+  position:       absolute;
+  top:            -60px;
+  left:           -60px;
+  width:          300px;
+  height:         300px;
+  border-radius:  50%;
+  background:     radial-gradient(circle, rgba(79, 142, 247, 0.08) 0%, transparent 70%);
+  pointer-events: none;/*empêche cet élément de capturer les événements de souris (clics, hover, etc.).*/
+  z-index:        0;/*place cet élément derrière le contenu principal (qui a généralement z-index: 1)*/
+  transition:     opacity var(--transition-smooth);
 }
 
-.service-card--featured:hover .service-card__glow {
-  opacity: 1.6;
-}
+.service-card--featured:hover .service-card__glow { opacity: 1.6; }
 
-/* ── Cartes SECONDAIRES (IoT + Data) ─────────────────────────── */
-.service-card--secondary {
-  flex: 1;                    /* Flexbox : occupe la moitié de la colonne */
-}
 
-.service-card--secondary .service-card__name {
-  font-size: 1.1rem;
-}
+/* ── Carte SECONDAIRE ─────── */
+.service-card--secondary { flex: 1; }
 
-/* ── Carte WIDE (Cybersécurité) — pleine largeur ligne 2 ─────── */
-.service-card--wide {
-  grid-column: 1 / -1;        /* occupe toutes les colonnes */
-}
+
+/*  Carte WIDE flex-wrap: wrap → le layout bascule seul sans media query */
+.service-card--wide { grid-column: 1 / -1; }
 
 .service-card--wide .service-card__inner {
-  flex-direction: row;        /* layout horizontal */
+  flex-direction: row;
   align-items:    center;
   gap:            var(--space-xl);
-  flex-wrap:      wrap;
+  flex-wrap:      wrap;         /* bascule en colonne sur petit écran */
 }
 
-.service-card--wide .service-card__top {
+/* :is() groupe les 2 règles flex-shrink : 1 ligne au lieu de 2 blocs */
+:is(.service-card--wide .service-card__top,
+    .service-card--wide .service-card__cta)/*pour appliquer les mêmes styles à deux éléments différents au sein d'une carte service*/
+     {
   flex-shrink: 0;
 }
 
 .service-card--wide .service-card__body {
-  flex: 1;
-  min-width: 200px;
+  flex:      1;
+  min-width: 200px;             /* déclenche le wrap sous 200px */
 }
 
-.service-card--wide .service-card__cta {
-  margin-top: 0;
-  flex-shrink: 0;
-}
+.service-card--wide .service-card__cta { margin-top: 0; }
 
-/* Bande verticale décorative gauche */
+/* Bande décorative verticale gauche */
 .service-card__stripe {
-  position: absolute;
-  top:      0;
-  left:     0;
-  width:    3px;
-  height:   100%;
-  background: linear-gradient(
-    to bottom,
-    var(--color-accent),
-    var(--color-accent-dark)
-  );
-  opacity: 0.7;
+  position:   absolute;
+  inset:      0 auto 0 0;      /* shorthand pour top/bottom/left = 0, right = auto */
+  width:      3px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-dark));/*dégradé vertical du bleu clair au bleu foncé*/
+  opacity:    0.7;
   transition: opacity var(--transition-base);
 }
 
-.service-card--wide:hover .service-card__stripe {
-  opacity: 1;
-}
+.service-card--wide:hover .service-card__stripe { opacity: 1; }
 
-/* =============================================================
-   RESPONSIVE — Tablette (≤ 1024px)
-============================================================= */
-@media (max-width: 1024px) {
-  .services {
-    padding: var(--space-2xl) var(--space-lg);
-  }
 
-  .services__grid {
-    grid-template-columns: 1fr 1fr;   /* deux colonnes égales */
-    gap: var(--space-md);
-  }
-
-  .service-card--featured .service-card__inner {
-    min-height: 320px;
-    padding: var(--space-xl);
-  }
-
-  .service-card--featured .service-card__name {
-    font-size: 1.3rem;
-  }
-
-  .service-card--wide .service-card__inner {
-    flex-direction: column;
-    align-items:    flex-start;
-  }
-
-  .service-card--wide .service-card__cta {
-    margin-top: var(--space-xs);
-  }
-}
-
-/* =================================RESPONSIVE — Mobile (≤ 768px)=========================== */
+/* ── Responsive — Mobile ────────
+   1 seul breakpoint nécessaire : tout le reste est géré par
+   clamp() et flex-wrap ci-dessus──────────────── */
 @media (max-width: 768px) {
-  .services {
-    padding: var(--space-2xl) var(--space-md);
-  }
-
-  .services__title {
-    font-size: 1.75rem;
-  }
-
-  /* Passage à une colonne unique */
-  .services__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-  }
-
-  /* La colonne droite redevient un flux normal */
-  .services__column {
-    gap: var(--space-md);
-  }
-
-  /* Carte featured : pas de hauteur min fixe */
-  .service-card--featured .service-card__inner {
-    min-height: unset;
-    padding: var(--space-lg);
-  }
-
-  /* Carte wide : pas besoin d'être wide sur mobile */
-  .service-card--wide .service-card__inner {
-    padding: var(--space-lg);
-  }
-
-  .service-card__inner {
-    padding: var(--space-lg);
-  }
+  .services__grid         { grid-template-columns: 1fr; }/* transforme la grille multi-colonnes en une seule colonne fluide. Chaque carte de service occupera toute la largeur disponible, créant ainsi une expérience de lecture optimisée pour les écrans plus petits. */
+  .service-card--featured { min-height: unset; }/* supprime la hauteur minimale prédéfinie de la carte featured (mise en avant) pour permettre à son contenu de s'adapter naturellement à la taille de l'écran sur les appareils mobiles. */
 }
