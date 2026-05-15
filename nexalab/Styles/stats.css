@@ -5,7 +5,7 @@
   padding: clamp(2.5rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem);
   overflow: hidden;
    background: 
-                url('/assets/img/stats-bg.svg') no-repeat center center/cover;
+                url('assets/img/nexalab_stats_bg.svg') no-repeat center center/cover;
 }
 
 
