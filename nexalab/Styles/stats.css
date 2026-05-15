@@ -4,8 +4,8 @@
   background-color: var(--color-surface);
   padding: clamp(2.5rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem);
   overflow: hidden;
-  background: var(--color-surface)
-                url('Groupe-N-3-Projet-Bloc-2-/nexalab/assets/img/stats.svg') no-repeat center center/cover;
+   background: 
+                url('/assets/img/stats-bg.svg') no-repeat center center/cover;
 }
 
 
