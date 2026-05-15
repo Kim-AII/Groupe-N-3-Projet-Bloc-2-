@@ -1,272 +1,213 @@
-/* ============================================
-   SECTION CONTACT — NexaLab
-   Fichier  : styles/contact.css
-   Auteur   : Sandrine
-   Design   : maquette_nexalab_v2
-   Dépend de: styles/base.css (variables)
-============================================ */
-
-/* ── Variables rappel (définies dans base.css) ─
-   --bg       : #000000
-   --surface  : #0a0a0a
-   --surface2 : #111111
-   --border   : #222222
-   --accent   : #4f8ef7
-   --accent-d : #2563c4
-   --text     : #ffffff
-   --muted    : #888888
-   --light    : #cccccc
-   --font-mono: 'DM Mono', monospace
-   --font-body: 'DM Sans', sans-serif
-──────────────────────────────────────────── */
+/* =============================================================
+   contact.css — NexaLab
+   Section  : Formulaire de contact
+   Auteur   : Abdou-Hakim KARIM ISSAOU
+============================================================= */
 
 
-/* ══════════════════════════════════════════
-   1. SECTION WRAPPER
-══════════════════════════════════════════ */
-
+/* ── Layout 2 colonnes ───────────────────────────────────── */
 .contact {
-  padding: 120px 24px;
-  border-top: 1px solid var(--border);
+  padding: clamp(var(--space-xl), 8vw, var(--space-3xl)) clamp(var(--space-md), 4vw, var(--space-xl));
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(rgba(27, 27, 27, 0.85), rgba(0, 0, 0, 0.85)), 
+  url('/assets/img/np.png') no-repeat center center/cover;;
 }
 
+/* Glow violet en bas — CSS pur */
+.contact::before {
+  content: "";
+  position: absolute;
+  bottom: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(124, 58, 237, 0.09) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-/* ══════════════════════════════════════════
-   2. GRILLE INTÉRIEURE : 2 colonnes égales
-══════════════════════════════════════════ */
-
-.contact-inner {
-  max-width: 1100px;
+.contact__inner {
+  display: flex;
+  gap: clamp(var(--space-xl), 6vw, var(--space-3xl));
+  align-items: flex-start;
+  max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* ── Colonne info (gauche) ───────────────────────────────── */
+.contact__info {
+  flex: 0 0 clamp(260px, 30%, 380px);
   display: flex;
-  flex-direction: row;
-  gap: 80px;
-  align-items: start;
+  flex-direction: column;
+  gap: var(--space-lg);
 }
 
-/* Colonne infos : largeur fixe */
-.contact-info {
-  flex: 1;
+.contact__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
 }
 
-/* Colonne formulaire : flex 1 aussi */
-.contact-form {
-  flex: 1;
+.contact__text {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
 }
 
+/* Détails de contact */
+.contact__details { display: flex; flex-direction: column; gap: var(--space-sm); }
 
-/* ══════════════════════════════════════════
-   3. COLONNE GAUCHE — INFOS
-══════════════════════════════════════════ */
-
-/* Label "Contact" en monospace (partagé via base.css) */
-.contact .section-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--accent);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-}
-
-/* Titre principal */
-.contact-info h2 {
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 300;
-  letter-spacing: -1.5px;
-  line-height: 1.1;
-  margin-bottom: 16px;
-  color: var(--text);
-}
-
-.contact-info h2 strong {
-  font-weight: 600;
-  color: var(--accent);
-}
-
-/* Sous-titre */
-.contact-info p {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 32px;
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-/* Chaque ligne d'info (email, tel, adresse) */
-.contact-detail {
+.contact__detail {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 12px;
-  font-size: 13px;
-  color: var(--light);
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--border);
+  gap: 0.875rem;
 }
 
-.contact-detail:last-child {
-  border-bottom: none;
-}
-
-/* Lien dans les infos */
-.contact-detail a {
-  color: var(--light);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.contact-detail a:hover {
-  color: var(--accent);
-}
-
-/* Icône carrée */
-.contact-icon {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+.contact__detail-icon {
+  width: 40px; height: 40px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  color: var(--accent);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 212, 255, 0.07);
+  border: 1px solid rgba(0, 212, 255, 0.18);
 }
 
-.contact-icon svg {
-  width: 16px;
-  height: 16px;
+.contact__detail-icon svg {
+  width: 18px; height: 18px;
+  stroke: var(--color-accent);
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-
-/* ══════════════════════════════════════════
-   4. COLONNE DROITE — FORMULAIRE
-══════════════════════════════════════════ */
-
-/* Groupe champ : label + input */
-.form-group {
-  margin-bottom: 16px;
-}
-
-/* Label style monospace */
-.form-label {
-  display: block;
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 6px;
+.contact__detail-label {
   font-family: var(--font-mono);
-  letter-spacing: 0.5px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
 }
 
-/* Input & Textarea — style commun */
-.form-input {
+.contact__detail-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+
+/* ── Formulaire (droite) ─────────────────────────────────── */
+.contact__form {
+  flex: 1;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--space-lg), 4vw, var(--space-xl));
+}
+
+.form__row { display: flex; gap: var(--space-sm); }
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  margin-bottom: var(--space-md);
+}
+
+.form__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+/* Inputs, select, textarea — base commune */
+.form__input,
+.form__select,
+.form__textarea {
   width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  color: var(--text);
-  font-size: 14px;
+  background: rgb(14, 14, 22);
+  border: 1px solid var(--color-border-2);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
   font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
   outline: none;
-  transition: border-color 0.2s ease;
-  /* Supprime le style natif du navigateur */
   appearance: none;
-  -webkit-appearance: none;
-  box-sizing: border-box;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
-/* Placeholder discret */
-.form-input::placeholder {
-  color: #444;
+.form__input::placeholder,
+.form__textarea::placeholder { color: rgba(139, 158, 199, 0.35); }
+
+/* Focus — anneau cyan */
+:is(.form__input, .form__select, .form__textarea):focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
 }
 
-/* Focus : bordure bleue */
-.form-input:focus {
-  border-color: var(--accent);
+/* Select — flèche custom SVG inline */
+.form__select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24'%3E%3Cpath stroke='%238B9EC7' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
 }
 
-/* Textarea spécifique */
-textarea.form-input {
+.form__select option { background: var(--color-bg-card); }
+
+.form__textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 130px;
   line-height: 1.6;
 }
 
-/* Ligne Nom + Email côte à côte */
-.form-row {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-}
-
-.form-row .form-group {
-  flex: 1;
-}
-
-/* Bouton d'envoi — pleine largeur */
-.contact-btn {
+/* Bouton d'envoi */
+.form__submit {
   width: 100%;
-  padding: 14px;
-  background: var(--accent);
-  color: #000000;
-  border: none;
-  border-radius: 8px;
-  font-family: var(--font-body);
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  color: white;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
   font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: none;
   cursor: pointer;
-  text-align: center;
-  transition: background 0.2s ease, color 0.2s ease;
-  margin-top: 4px;
+  transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
-.contact-btn:hover {
-  background: var(--accent-d);
-  color: #ffffff;
-}
+.form__submit:hover { opacity: 0.88; transform: translateY(-1px); }
 
-
-/* ══════════════════════════════════════════
-   5. RESPONSIVE — TABLETTE (≤ 1024px)
-══════════════════════════════════════════ */
-
-@media (max-width: 1024px) {
-
-  .contact {
-    padding: 80px 24px;
-  }
-
-  .contact-inner {
-    gap: 48px;
-  }
+.form__submit svg {
+  width: 18px; height: 18px;
+  stroke: white; fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 
-/* ══════════════════════════════════════════
-   6. RESPONSIVE — MOBILE (≤ 768px)
-══════════════════════════════════════════ */
-
+/* ── Responsive — Mobile ─────────────────────────────────── */
 @media (max-width: 768px) {
-
-  .contact {
-    padding: 64px 20px;
-  }
-
-  /* Colonnes passent en vertical */
-  .contact-inner {
-    flex-direction: column;
-    gap: 40px;
-  }
-
-  /* Nom + Email passent en colonne */
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .contact-info h2 {
-    font-size: 32px;
-  }
+  .contact__inner { flex-direction: column; }
+  .contact__info  { flex: none; width: 100%; }
+  .form__row      { flex-direction: column; }
 }
