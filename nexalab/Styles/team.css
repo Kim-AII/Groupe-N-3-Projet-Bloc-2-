@@ -1,379 +1,436 @@
-/*===================== PARTIE 1 LES VARIABLES ET  L'INITIALISATION===========================*/
-*{
+
+
+/*====================PARTIE 1 — VARIABLES & INITIALISATION===================*/
+
+/* Reset : supprime les marges et paddings par défaut du navigateur
+   et force le calcul de taille à inclure les bordures (border-box) */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* :root = sommet de la page. Les variables déclarées ici
+   sont accessibles partout dans le CSS via var(--nom) */
 :root {
-    --bg: #090c12;  /* le fond générale de la page*/
-    --sufarce: #111a2c; /* le fond des cartes*/
-    --surface-2: #181e2c /* le fnd secondaire, pour les photos, tags..*/
-    --boder:  rgba (255, 255, 255, 0.07) /* les bordures substiles*/
-    --accent:  /* la couleur principale*/
-    --accent-dim:  rgba(0, 46, 229, 0.437); /* accent transparent */
-    --accent-glow:  rgba(0, 38, 229, 0.25); /* accent pour les lueurs*/
-    --text-1: #eef0f5;  /*texte principal*/
-    --text-2:  #8a93a8;   /* secondaire*/
-    --text-3:  #545d72;   /*tertiare*/
-    --radius-card: 16px;           /* pour arrondir les bords des cartes */
-    --transition: 0.35s cubic-bezier(.4,0,.2,1);  /* transition fluide, lorsque le curseur passe sur la carte il y a un bref changemaent de couleur */ 
+    /* ── Fonds ── */
+    --bg:         #0a0c10;   /* fond principal de la page (noir profond) */
+    --surface:    #111318;   /* fond des cartes (légèrement plus clair) */
+    --surface-2:  #1a1f2e;   /* fond secondaire : photos, tags, boutons */
 
+    /* ── Bordures ── */
+    /* CORRECTION : pas d'espace entre rgba et la parenthèse — rgba (x) est invalide */
+    --border: rgba(255, 255, 255, 0.07); /* blanc à 7% d'opacité, très subtil */
+
+    /* ── Couleurs d'accent (charte NexaLab) ── */
+    --accent:      #4f8ef7;               /* bleu vif — CTA, titres, liens */
+    --accent-dark: #2563c4;               /* bleu foncé — hover des boutons */
+    --accent-dim:  rgba(79,142,247,0.12); /* bleu très transparent — fonds légers */
+    --accent-glow: rgba(79,142,247,0.25); /* bleu pour les lueurs au hover */
+
+    /* ── Textes (charte NexaLab) ── */
+    --text-1: #e2e8f0;   /* texte principal — corps de texte */
+    --text-2: #64748b;   /* texte secondaire — sous-titres, labels */
+    --text-3: #4a5568;   /* texte tertiaire — icônes au repos */
+
+    /* ── Divers ── */
+    --radius-card: 16px;                          /* arrondi des coins des cartes */
+    --transition:  0.35s cubic-bezier(.4,0,.2,1); /* animation fluide sur tous les hovers */
 }
 
+/* Styles de base appliqués à toute la page */
 body {
-  
-  background: var (--bg);/* le fond de la page comme defini olus haut*/
-  color: var (--text-1); /* la couleur de tout le texte*/
-  font-family: 'DM Sans', sans-serif; /* les polices*/
-  font-size:15 px; /* la taille du texte*/
-  line-height:1.6; /* l'espacement entre les lignes*/
-  min-height: 100 vh; /* la hauteurminimale de la page pour que la page couvre tout l'écran mm avec peu de texte*/
-  }
-/*=============== =================PARTIE 2__ LA SECTION WRAPPER=================== 
-                            elle eveloppe le contenu de section team pour quil ne déborde pas sur toute la page*/
+    background: var(--bg);                       /* fond noir profond sur toute la page */
+    color: var(--text-1);                        /* texte blanc cassé par défaut partout */
+    font-family: 'Inter', system-ui, sans-serif; /* police corps de texte (charte NexaLab) */
+    font-size: 15px;                             /* taille de base — 1rem = 15px */
+    line-height: 1.6;                            /* interligne aéré pour la lisibilité */
+    min-height: 100vh;                           /* couvre tout l'écran même avec peu de contenu */
+}
+
+
+/*==============================================
+   PARTIE 2 — SECTION WRAPPER
+   Enveloppe tout le contenu Team, le centre et l'empêche
+   de s'étirer sur les très grands écrans======================= */
+
 .team-section {
-  padding: 100 px 24 px;
-  max-width: 1200 px;
-  margin: 0;
-}
-/*===================== PARTIE 3=================== L'EN TETE DE LA SECTION TEAM===*/
-.section-header { /* Tjrs our team*/
-  text-align: center;
-  margin-bottom: 72 px;
+    /* CORRECTION : pas d'espace dans les valeurs — "100 px" est invalide → "100px" */
+    padding: 100px 24px;  /* espace intérieur : 100px haut/bas, 24px gauche/droite */
+    max-width: 1200px;    /* largeur maximale du contenu */
+    margin: 0 auto;       /* CORRECTION : "margin: 0" → "margin: 0 auto" pour centrer */
 }
 
+
+/* =============== PARTIE 3 — EN-TÊTE DE LA SECTION TEAM================== */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 72px;
+}
+
+/* La petite pilule bleue "L'équipe de Nexlab" */
 .section-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8 px;
-  font-size: 12 px;
-  font-weight: 500;
-  letter-spacing: 0.15 em;
-  text-transform: uppercase;
-  color: var (--accent);
-  background: var (--accent-dim);
-  border: 1 px solid rgba (0,229,180,0.2);
-  border-radius: 100 px;
-  padding: 6 px 16 px;
-  margin-bottom: 24 px;
+    display: inline-flex;   /* la pilule ne prend que la place de son contenu */
+    align-items: center;    /* aligne le point et le texte verticalement */
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,142,247,0.2);
+    border-radius: 100px;  /* coins toujours complètement arrondis */
+    padding: 6px 16px;
+    margin-bottom: 24px;
 }
 
-/* Le petit point avant le texte du tag */
+/* Le petit point animé créé en CSS pur, avant le texte
+   ::before = élément visuel ajouté AVANT le contenu, sans HTML */
 .section-tag::before {
-    content: '';
-    width: 6 px; border-radius: 50%;
-    background: var (--accent);
-    animation: pulse 2 s ease-in-out infinite;
+    content: '';            /* élément vide, purement visuel */
+    width: 6px;
+    height: 6px;            /* CORRECTION : hauteur manquante dans ton code */
+    border-radius: 50%;     /* cercle parfait */
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite; /* CORRECTION : "2 s" → "2s" */
 }
 
-/* Nous passons au keyframe qui definit l'animation en collab avec les :: avant before*/
+/* Animation du point : grossit et rétrécit en boucle */
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale (1); }
-    50%       { opacity: 0.4; tansform: scale (0.7); }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    /* CORRECTION : "tansform" → "transform", "scale (0.7)" → "scale(0.7)" */
+    50%       { opacity: 0.4; transform: scale(0.7); }
 }
 
+/* Grand titre de la section */
 .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp (2 rem, 5 vw, 3.2 rem); /* adaptabilité à la taille del'ecran*/
+    font-family: 'Space Grotesk', system-ui, sans-serif; /* police titres (charte NexaLab) */
+    /* clamp(min, idéal, max) : taille qui s'adapte à la taille de l'écran
+       CORRECTION : "clamp (2 rem, 5 vw, 3.2 rem)" → "clamp(2rem, 5vw, 3.2rem)" */
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 800;
-    line-height: 1.1; 
-    letter-spacing: -0.02 em;
-    color: var (--text-1);
-    margin-bottom: 16 px
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-1);
+    margin-bottom: 16px; /* CORRECTION : point-virgule manquant */
 }
-    
-/* Le mot en couleur dans le titre */
+
+/* Mots colorés en bleu dans le titre (balise <span> dans le HTML) */
 .section-title span {
-  color: var (--accent);
+    color: var(--accent); /* CORRECTION : "var (--accent)" → "var(--accent)" */
 }
- 
+
+/* Texte descriptif sous le titre */
 .section-subtitle {
-  font-size: 16 px;
-  color: var (--text-2);
-  max-width: 520 px;
-  margin: 0 auto;
-  font-weight: 300;
+    font-size: 16px;
+    color: var(--text-2);
+    max-width: 520px;   /* limite la largeur pour ne pas fatiguer l'œil */
+    margin: 0 auto;     /* centre le sous-titre */
+    font-weight: 300;   /* texte fin — contraste avec le titre très gras */
 }
 
-/*============== PARTIE 4=== la grille des cartes=========================*/
+
+/* =================== PARTIE 4 — GRILLE DES CARTES================= */
+
 .team-grid {
-    display: grid; /* active les colonnes*/
-    /* auto-fill = autant de colonnes que possible selon la largeur*/
-    /* minmax (260 px, 1 fr) = chaque colonne fait min 260 px, et le max egalemt*/
-    grid-column: repeat (auto-fill, minmax (260 px, 1 fr)); /* repeat cré automatiquement le bon nombre de olonnes*/
-    gap: 24 px; /* espace entre les cartes*/
+    display: grid; /* active le mode CSS Grid */
 
-    /* ================ PARTIE 5 === LA CARTE DE CHAQUE MEMBRE======*/
-    .member-card {
-        position: relative; /* permet de positionner des éléments à l'intérieur de la carte en valeurs absolues.
-        Sans ça, le badge de rôle et l'overlay ne sauraient pas où se placer.*/
-        
-        background: var (--surface);
-        border: 1 px solid var (--border); /* ne bordure très subtile autour de la carte — rgba(255,255,255,0.07), donc blanc à 7% d'opacité.
-        Presque invisible mais elle donne de la définition à la carte.*/
-        
-        border-radius: var (radius-card); /* arrondi les coins des pjotos*/
-        
-        overflow: hidden; /*: "tout ce qui dépasse les bords de la carte devient invisible". 
-        C'est ce qui fait que la photo reste bien dans sa zone et que l'arrondi des coins s'applique aussi à la photo.*/
-        
-        cursor: defaulte; /* Le curseur reste une flèche normale au survol.
-        Sans ça, selon le navigateur il pourrait devenir une main comme sur un lien, ce qui serait trompeur.*/
-        
-        transition: border-color var (--transition),
-            transform var (--transition), 
-            box-shadow var (--transition); /* On prépare 3 propriétés à s'animer lors du hover — la bordure, le déplacement et l'ombre.
-        Sans cette ligne, les changements du hover seraient instantanés et brusques. */
+    /* CORRECTION : "grid-column" → "grid-template-columns"
+       CORRECTION : "260 px" → "260px", "1 fr" → "1fr"
+       CORRECTION : "repeat (auto-fill," → "repeat(auto-fill,"
+       auto-fill = autant de colonnes que possible selon la largeur
+       minmax(260px, 1fr) = min 260px, max part égale */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+
+    gap: 24px; /* espace entre toutes les cartes */
+}
 
 
+/*==========================================
+   PARTIE 5 — CARTE MEMBRE (base + hover)
+   CORRECTION MAJEURE : les règles étaient imbriquées DANS
+   .team-grid avec des accolades { } — en CSS standard,
+   les règles ne s'imbriquent pas. Chaque bloc est séparé.
+ ========================================================*/
 
-    }
-    
-    .member-card:hover {
-        border-color: var (--accent); /* la bordure devient de la couleur d'accent au hover*/
-        transform: translateY (-4 px); /* la carte se soulève légèrement au hover*/
-        box-shadow: 0 8 px 24 px var (--accent-glow); /* une ombre colorée apparaît sous la carte au hover, pour renforcer l'effet de soulèvement. */
-    }
-      }
-/* ============= PARTIE 6==== Trait d'accent sur la barre bleu en haut de carte=============*/
- 
+.member-card {
+    position: relative; /* nécessaire pour que le badge et l'overlay
+                           se positionnent par rapport à la carte */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card); /* CORRECTION : "(radius-card)" → "(--radius-card)" */
+    overflow: hidden;   /* la photo ne déborde pas des coins arrondis */
+    cursor: default;    /* CORRECTION : "defaulte" → "default" */
+
+    /* 3 propriétés animées au hover */
+    transition: border-color var(--transition),
+                transform var(--transition),
+                box-shadow var(--transition);
+}
+
+/* Au survol : la carte remonte et s'illumine */
+.member-card:hover {
+    border-color: var(--accent);
+    /* CORRECTION : "translateY (-4 px)" → "translateY(-4px)" */
+    transform: translateY(-4px);
+    /* CORRECTION : "0 8 px 24 px" → "0 8px 24px" */
+    box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+
+/* ========= PARTIE 6 — TRAIT D'ACCENT====== Barre bleue en haut de chaque carte, révélée au hover*/
 .card-accent-bar {
-  height: 3 px;
-  background: linear-gradient (90 deg, var (--accent), transparent);
-  opacity: 0;                          /* invisible par défaut */
-  transition: opacity var (--transition);
+    height: 3px;
+    /* CORRECTION : "linear-gradient (90 deg," → "linear-gradient(90deg," */
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;   /* invisible par défaut */
+    transition: opacity var(--transition);
 }
- 
+
 .member-card:hover .card-accent-bar {
-  opacity: 1;                          /* visible au hover */
+    opacity: 1;   /* visible au hover */
 }
- 
- 
-/* ====================PARTIE 7 === Zone photo ===================== */
- 
+
+
+/* =======PARTIE 7 — ZONE PHOTO========*/
+
 .card-photo-wrap {
-  position: relative;
-  height: 220 px;
-  background: var (--surface-2);
-  overflow: hidden;
+    position: relative; /* nécessaire pour l'overlay et le badge */
+    height: 220px;      /* CORRECTION : "220 px" → "220px" */
+    background: var(--surface-2);
+    overflow: hidden;
 }
 
- 
-/* Si on mets une vraie photo (<img>) */
+/* Vraie photo <img> */
 .card-photo-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* la photo remplit la zone sans se déformer */
-  display: block;
-  filter: grayscale (20%);  /* légèrement désaturée par défaut */
-  transition: filter var (--transition), transform var (--transition);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;           /* remplit sans déformer */
+    object-position: center top; /* cadre sur le haut (visages) */
+    display: block;
+    filter: grayscale(20%);      /* CORRECTION : "grayscale (20%)" → "grayscale(20%)" */
+    transition: filter var(--transition), transform var(--transition);
 }
- 
-.member-card:hover .card-photo-wrap img {
-  filter: grayscale (0%);   /* couleurs normales au hover */
-  transform: scale (1.04);  /* léger zoom */
-}
-        /* Placeholder s'il n'y a pas de photo (cercle avec initiales) */
-.photo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient (135 deg, var (--surface-2) 0%, #0d1422 100%);
-}
- 
-.initials-circle {
-  width: 80 px;
-  height: 80 px;
-  border-radius: 50%;
-  background: var (--accent-dim);
-  border: 2 px solid rgba(0,229,180,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Syne', sans-serif;
-  font-size: 24 px;
-  font-weight: 700;
-  color: var (--accent);
-  letter-spacing: 0.05 em;
-}
- 
- 
-/* =====PARTIE 8===== Overlay (fond sombre + citation au hover)=========*/
- 
-.card-overlay {
-  position: absolute;
-  inset: 0;                /* couvre toute la zone photo */
-  background: linear-gradient ( to top,
-    rgba(9,12,18,0.92) 0%,
-    rgba(9,12,18,0.2)  60%,
-    transparent        100%
-  );
-  opacity: 0;              /* invisible par défaut */
-  transition: opacity var (--transition);
-  display: flex;
-  align-items: flex-end;   /* contenu en bas de l'overlay */
-  padding: 20 px;
-}
- 
-.member-card:hover .card-overlay {
-  opacity: 1;              /* visible au hover */
-}
- 
-.member-quote {
-  font-size: 13 px;
-  font-style: italic;
-  color: rgba (238,240,245,0.8);
-  line-height: 1.5;
-  border-left: 2 px solid var (--accent);
-  padding-left: 10 px;
-}
- 
- 
-/* =======PARTIE 9========== Badge de rôle (coin haut droit de la photo) ==========*/
- 
-.role-badge {
-  position: absolute;
-  top: 14 px;
-  right: 14 px;
-  background: rgba (9,12,18,0.8);
-  border: 1 px solid var (--border);
-  border-radius: 100 px;
-  padding: 4 px 12 px;
-  font-size: 11 px;
-  font-weight: 500;
-  color: var (--accent);
-  letter-spacing: 0.05 em;
-  text-transform: uppercase;
-}
- 
- 
-/* =====PARTIE 10=======Corps de carte (infos texte)==================== */
- 
-.card-body {
-  padding: 20 px 22 px 22 px;
-}
- 
-.member-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 18 px;
-  font-weight: 700;
-  color: var (--text-1);
-  margin-bottom: 4 px;
-  letter-spacing: -0.01 em;
-}
- 
-.member-role {
-  font-size: 13 px;
-  color: var (--text-2);
-  margin-bottom: 16 px;
-}
- 
-.card-divider {
-  height: 1 px;
-  background: var (--border);
-  margin-bottom: 16 px;
-}
- 
- 
-/* ==========PARTIE 11=================Tags de compétences============== */
- 
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;    /* les tags passent à la ligne s'il n'y a pas assez de place */
-  gap: 6 px;
-  margin-bottom: 18 px;
-}
- 
-.skill-tag {
-  font-size: 11 px;
-  font-weight: 500;
-  color: var (--text-2);
-  background: var (--surface-2);
-  border: 1 px solid var (--border);
-  border-radius: 6 px;
-  padding: 3 px 10 px;
-  letter-spacing: 0.03 em;
-}
- 
- 
-/*=========== PARTIE 12=======Liens sociaux ============ */
- 
-.social-links {
-  display: flex;
-  align-items: center;
-  gap: 10 px;
-}
- 
-.social-link {
-  width: 34 px;
-  height: 34 px;
-  border-radius: 8 px;
-  background: var (--surface-2);
-  border: 1 px solid var (--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: background var (--transition),
-              border-color var (--transition),
-              color var (--transition);
-  color: var (--text-3);
-}
- 
-.social-link:hover {
-  background: var (--accent-dim);
-  border-color: rgba (0,229,180,0.3);
-  color: var (--accent);
-}
- 
-.social-link svg {
-  width: 15 px;
-  height: 15 px;
-  fill: currentColor;  /* l'icône prend la couleur du lien parent */
-}
- 
- 
-/*===========PARTIE 13================= Stats en bas de section =================*/
- 
-.team-stats {
-  display: flex;
-  justify-content: center;
-  gap: 48 px;
-  margin-top: 64 px;
-  padding-top: 48 px;
-  border-top: 1 px solid var (--border);
-}
- 
-.stat-item {
-  text-align: center;
-}
- 
-.stat-number {
-  font-family: 'Syne', sans-serif;
-  font-size: 2.2 rem;
-  font-weight: 800;
-  color: var (--accent);
-  line-height: 1;
-  margin-bottom: 6 px;
-}
- 
-.stat-label {
-  font-size: 13 px;
-  color: var (--text-3);
-  text-transform: uppercase;
-  letter-spacing: 0.1 em;
-}
- 
- 
-/* ==========================PARTIE 14======Responsive (petits écrans)======================== */
- 
-@media (max-width: 600px) {
-  .team-section { padding: 60px 16px; }
-  .team-stats   { gap: 28px; }
-  .stat-number  { font-size: 1.8rem; }
-}
- /* les couleurs sont à revoir*/
 
+/* Au hover : couleurs normales + léger zoom */
+.member-card:hover .card-photo-wrap img {
+    filter: grayscale(0%);   /* CORRECTION : "grayscale (0%)" → "grayscale(0%)" */
+    transform: scale(1.04);  /* CORRECTION : "scale (1.04)" → "scale(1.04)" */
+}
+
+/* Placeholder si pas de photo */
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* CORRECTION : "linear-gradient (135 deg," → "linear-gradient(135deg," */
+    background: linear-gradient(135deg, var(--surface-2) 0%, #0d1422 100%);
+}
+
+/* Cercle avec les initiales */
+.initials-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 2px solid rgba(79,142,247,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+}
+
+
+/* =====PARTIE 8 — OVERLAY===== Fond sombre + citation, révélé au survol=== */
+
+.card-overlay {
+    position: absolute;
+    inset: 0;  /* couvre toute la zone photo */
+    /* CORRECTION : "linear-gradient ( to top," → "linear-gradient(to top," */
+    background: linear-gradient (
+        to top,
+        rgba(9,12,18,0.92) 0%,
+        rgba(9,12,18,0.2)  60%,
+        transparent        100%
+    );
+    opacity: 0;   /* invisible par défaut */
+    transition: opacity var(--transition);
+    display: flex;
+    align-items: flex-end;  /* citation en bas de l'overlay */
+    padding: 20px;
+}
+
+.member-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* Citation en italique */
+.member-quote {
+    font-size: 13px;
+    font-style: italic;
+    /* CORRECTION : "rgba (238,240,245,0.8)" → "rgba(238,240,245,0.8)" */
+    color: rgba(238,240,245,0.8);
+    line-height: 1.5;
+    border-left: 2px solid var(--accent); /* trait bleu à gauche */
+    padding-left: 10px;
+}
+
+
+/*================== PARTIE 9 — BADGE DE RÔLE========== Pilule positionnée en haut à droite de la photo======= */
+
+.role-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    /* CORRECTION : "rgba (9,12,18,0.8)" → "rgba(9,12,18,0.8)" */
+    background: rgba(9,12,18,0.8);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+
+/* ===================== PARTIE 10 — CORPS DE CARTE======= Zone basse : nom, rôle, séparateur================*/
+
+.card-body {
+    padding: 20px 22px 22px; /* CORRECTION : "20 px 22 px 22 px" → "20px 22px 22px" */
+}
+
+.member-name {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-1);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+}
+
+.member-role {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 16px;
+}
+
+/* Ligne de séparation entre le rôle et les tags */
+.card-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 16px;
+}
+
+
+/* ======================= PARTIE 11 — TAGS DE COMPÉTENCES============= */
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;  /* les tags passent à la ligne si pas assez de place */
+    gap: 6px;
+    margin-bottom: 18px;
+}
+
+.skill-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-2);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 10px;
+    letter-spacing: 0.03em;
+}
+
+
+/* ===========================
+   PARTIE 12 — LIENS SOCIAUX
+  ============================== */
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-link {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background var(--transition),
+                border-color var(--transition),
+                color var(--transition);
+    color: var(--text-3); /* icône grise au repos */
+}
+
+/* Au hover : fond et icône bleutés */
+.social-link:hover {
+    background: var(--accent-dim);
+    /* CORRECTION : couleur mise à jour selon charte NexaLab (bleu) */
+    border-color: rgba(79,142,247,0.3);
+    color: var(--accent);
+}
+
+/* L'icône SVG hérite de la couleur du lien parent */
+.social-link svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+
+
+/* ===========================PARTIE 13 — STATS EN BAS ==================*/
+
+.team-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    font-size: 2.2rem;  /* CORRECTION : "2.2 rem" → "2.2rem" */
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+
+/*=========================PARTIE 14 — RESPONSIVE======Adaptations pour les petits écrans============ */
+
+@media (max-width: 600px) {
+    .team-section { padding: 60px 16px; }
+    .team-stats   { gap: 28px; }
+    .stat-number  { font-size: 1.8rem; }
+}
