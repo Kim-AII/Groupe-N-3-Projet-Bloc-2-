@@ -263,9 +263,7 @@
    8. VARIANTE — CARTE WIDE (pleine largeur)
 ══════════════════════════════════════════ */
 
-.testi-card--wide {
-  /* Hors de la grille bento, pleine largeur naturelle */
-}
+/* .testi-card--wide — Hors de la grille bento, pleine largeur naturelle */
 
 /* Bande décorative verticale gauche — même que service-card__stripe */
 .testi-card__stripe {
