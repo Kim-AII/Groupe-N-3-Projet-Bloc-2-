@@ -81,30 +81,55 @@
   --container-padding: 1.5rem;
 }
 
+/* Reset : supprime les marges et paddings par défaut du navigateur
+   et force le calcul de taille à inclure les bordures (border-box) */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-/* ────────────────────────────────────────
-   3. RESET
-   ──────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* :root = sommet de la page. Les variables déclarées ici
+   sont accessibles partout dans le CSS via var(--nom) */
+:root {
+    /* ── Fonds ── */
+    --bg:         #0a0c10;   /* fond principal de la page (noir profond) */
+    --surface:    #111318;   /* fond des cartes (légèrement plus clair) */
+    --surface-2:  #1a1f2e;   /* fond secondaire : photos, tags, boutons */
+
+    /* ── Bordures ── */
+    /* CORRECTION : pas d'espace entre rgba et la parenthèse — rgba (x) est invalide */
+    --border: rgba(255, 255, 255, 0.07); /* blanc à 7% d'opacité, très subtil */
+
+    /* ── Couleurs d'accent (charte NexaLab) ── */
+    --accent:      #4f8ef7;               /* bleu vif — CTA, titres, liens */
+    --accent-dark: #2563c4;               /* bleu foncé — hover des boutons */
+    --accent-dim:  rgba(79,142,247,0.12); /* bleu très transparent — fonds légers */
+    --accent-glow: rgba(79,142,247,0.25); /* bleu pour les lueurs au hover */
+
+    /* ── Textes (charte NexaLab) ── */
+    --text-1: #e2e8f0;   /* texte principal — corps de texte */
+    --text-2: #64748b;   /* texte secondaire — sous-titres, labels */
+    --text-3: #4a5568;   /* texte tertiaire — icônes au repos */
+
+    /* ── Divers ── */
+    --radius-card: 16px;                          /* arrondi des coins des cartes */
+    --transition:  0.35s cubic-bezier(.4,0,.2,1); /* animation fluide sur tous les hovers */
+}
+
+/* Styles de base appliqués à toute la page */
+body {
+    background: var(--bg);                       /* fond noir profond sur toute la page */
+    color: var(--text-1);                        /* texte blanc cassé par défaut partout */
+    font-family: 'Inter', system-ui, sans-serif; /* police corps de texte (charte NexaLab) */
+    font-size: 15px;                             /* taille de base — 1rem = 15px */
+    line-height: 1.6;                            /* interligne aéré pour la lisibilité */
+    min-height: 100vh;                           /* couvre tout l'écran même avec peu de contenu */
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-}
-
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-body);
-  font-weight: 400;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
 }
 
 img,
