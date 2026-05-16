@@ -12,16 +12,16 @@ body {
     line-height: 1.6;
 }
 
-/* image d'arrière-plan *******************************************************************************/
+/* image d'arrière-plan*/
 .about-section {
     min-height: 100vh;
     padding: 80px 5%;
     display: flex;
     align-items: center;
     position: relative;
-    /* Remplace 'votre-image.jpg' par ton lien */
-    background: linear-gradient(rgba(27, 27, 27, 0.85), rgba(0, 0, 0, 0.85)), 
-   url(../assets/images/about.jpg) no-repeat center center/cover;
+    background:  
+    url(../assets/images/stats-bg.svg) no-repeat center center/cover;
+   background-attachment: fixed;
 }
 
 .container {

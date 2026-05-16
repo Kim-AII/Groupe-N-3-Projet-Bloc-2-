@@ -4,8 +4,8 @@
   background-color: var(--color-surface);
   padding: clamp(2.5rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem);
   overflow: hidden;
-background:
-   url(../assets/images/stats-bg.svg) no-repeat center center/cover;
+background: linear-gradient(rgba(27, 27, 27, 0.85), rgba(0, 0, 0, 0.85)),
+   url(../assets/images/about.jpg) no-repeat center center/cover;
    background-attachment: fixed;
 }
 

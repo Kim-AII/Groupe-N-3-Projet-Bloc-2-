@@ -59,6 +59,9 @@ body {
     padding: 100px 24px;  /* espace intérieur : 100px haut/bas, 24px gauche/droite */
     max-width: 1200px;    /* largeur maximale du contenu */
     margin: 0 auto;       /* CORRECTION : "margin: 0" → "margin: 0 auto" pour centrer */
+    background: 
+  url(../assets/images/Contact-background.png) no-repeat center  center/cover;;
+  background-attachment: fixed;
 }
 
 
@@ -231,21 +234,10 @@ body {
     background: linear-gradient(135deg, var(--surface-2) 0%, #0d1422 100%);
 }
 
-/* Cercle avec les initiales */
-.initials-circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: var(--accent-dim);
-    border: 2px solid rgba(79,142,247,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.05em;
+/* Icone de placeholder */
+.photo-placeholder svg {
+    width: 32px; height: 32px;
+    stroke: var(--surface-2);
 }
 
 
@@ -275,9 +267,9 @@ body {
 /* Citation en italique */
 .member-quote {
     font-size: 13px;
-    font-style: italic;
+    font-style:bold italic;
     /* CORRECTION : "rgba (238,240,245,0.8)" → "rgba(238,240,245,0.8)" */
-    color: rgba(238,240,245,0.8);
+    color: rgba(0, 0, 0, 0.8);
     line-height: 1.5;
     border-left: 2px solid var(--accent); /* trait bleu à gauche */
     padding-left: 10px;

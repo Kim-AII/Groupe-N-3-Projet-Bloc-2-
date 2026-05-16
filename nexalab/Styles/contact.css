@@ -5,9 +5,7 @@
   background: var(--color-bg);
   position: relative;
   overflow: hidden;
-  background: 
-  url(../assets/images/Contact-background.png) no-repeat center  center/cover;;
-  background-attachment: fixed;
+  background: linear-gradient(rgba(27, 27, 27, 0.85), rgba(0, 0, 0, 0.85)),
 }
 
 /* Glow violet en bas — CSS pur */
